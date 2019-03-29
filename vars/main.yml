@@ -1,0 +1,10 @@
+---
+
+elasticsearch_required_libs:
+  - unzip
+
+elasticsearch_build_name: "elasticsearch-{{ elasticsearch_version }}"
+elasticsearch_package: "{{ elasticsearch_build_name }}.tar.gz"
+elasticsearch_package_url: "https://artifacts.elastic.co/downloads/elasticsearch/{{ elasticsearch_package }}"
+
+elasticsearch_systemd_file: /etc/systemd/system/elasticsearch.service

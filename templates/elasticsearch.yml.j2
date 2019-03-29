@@ -1,0 +1,7 @@
+{{ ansible_managed | comment }}
+{% if elasticsearch_config %}
+{{ elasticsearch_config | to_nice_yaml }}
+{% endif %}
+
+path.data: {{ elasticsearch_data_dir }}
+path.logs: {{ elasticsearch_log_dir }}

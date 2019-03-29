@@ -1,0 +1,14 @@
+---
+language: python
+python: 3.6
+sudo: required
+services:
+  - docker
+install:
+  - pip install pipenv
+  - pipenv install -r test-requirements.txt --python 3.6
+script:
+  - pipenv run molecule test
+
+notifications:
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/

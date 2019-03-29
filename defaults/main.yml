@@ -1,0 +1,40 @@
+---
+
+## General
+elasticsearch_version: 6.7.0
+elasticsearch_force_reinstall: false
+
+# Owner
+elasticsearch_user: elasticsearch
+elasticsearch_group: elasticsearch
+
+# Start on boot
+elasticsearch_service_enabled: true
+
+# Current state: started, stopped
+elasticsearch_service_state: started
+
+# Files & Paths
+elasticsearch_home: /opt/elasticsearch
+elasticsearch_conf_dir: "{{ elasticsearch_home }}/config"
+elasticsearch_log_dir: /var/log/elasticsearch
+elasticsearch_data_dir: /var/lib/elasticsearch
+elasticsearch_pid_dir: /var/run/elasticsearch
+
+# Hosts & ports
+elasticsearch_api_host: localhost
+elasticsearch_api_port: 9200
+elasticsearch_tcp_port: 9300
+
+# Config
+elasticsearch_max_open_files: 65536
+elasticsearch_max_threads: 8192
+
+elasticsearch_config: {}
+
+# Plugins
+elasticsearch_plugins: []
+elasticsearch_plugins_reinstall: false
+
+# JVM custom parameters
+elasticsearch_jvm_custom_parameters: ''

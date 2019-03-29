@@ -1,0 +1,22 @@
+---
+
+- name: Elasticsearch | Starting service
+  systemd:
+    name: elasticsearch
+    state: "{{ elasticsearch_service_state }}"
+    enabled: "{{ elasticsearch_service_enabled }}"
+    daemon_reload: true
+
+- name: Elasticsearch | Force handlers
+  meta: flush_handlers
+
+- name: Elasticsearch | Wait for service listening
+  wait_for:
+    host: "{{ elasticsearch_api_host }}"
+    port: "{{ elasticsearch_api_port }}"
+    state: "{{ elasticsearch_service_state }}"
+    delay: 5
+    timeout: 300
+  when:
+    - elasticsearch_service_enabled
+    - elasticsearch_service_state == "started"

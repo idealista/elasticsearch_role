@@ -1,0 +1,22 @@
+---
+
+group:
+  {{ elasticsearch_group }}:
+    exists: true
+
+user:
+  {{ elasticsearch_user }}:
+    exists: true
+    groups:
+      - {{ elasticsearch_group }}
+
+port:
+  tcp:{{ elasticsearch_api_port }}:
+    listening: true
+  tcp:{{ elasticsearch_tcp_port }}:
+    listening: true
+    
+service:
+  elasticsearch:
+    enabled: true
+    running: true

@@ -1,0 +1,16 @@
+tests/playbook.retry
+tests/.cache
+tests/__pycache__
+.pytest_cache
+.molecule
+.vagrant
+.cache
+
+*.iml
+.idea
+.project
+.vscode
+
+*.pyc
+Pipfile
+Pipfile.lock

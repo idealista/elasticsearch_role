@@ -1,0 +1,53 @@
+---
+
+- hosts: esmasterdata1
+  become: true
+
+  pre_tasks:
+  - name: Limits on mmap counts
+    sysctl:
+      name: vm.max_map_count
+      value: 262144
+      sysctl_set: true
+      state: present
+      reload: true
+
+  roles:
+    - role: elasticsearch_role
+      vars:
+        elasticsearch_api_host: esmasterdata1
+
+- hosts: esmasterdata2
+  become: true
+
+  pre_tasks:
+  - name: Limits on mmap counts
+    sysctl:
+      name: vm.max_map_count
+      value: 262144
+      sysctl_set: true
+      state: present
+      reload: true
+
+  roles:
+    - role: elasticsearch_role
+      vars:
+        elasticsearch_api_host: esmasterdata2
+
+- hosts: esmasterdata3
+  become: true
+
+  pre_tasks:
+  - name: Limits on mmap counts
+    sysctl:
+      name: vm.max_map_count
+      value: 262144
+      sysctl_set: true
+      state: present
+      reload: true
+
+  roles:
+    - role: elasticsearch_role
+      vars:
+        elasticsearch_api_host: esmasterdata3
+

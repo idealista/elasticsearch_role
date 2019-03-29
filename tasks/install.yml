@@ -1,0 +1,81 @@
+---
+
+- name: Elasticsearch | Installing dependencies
+  apt:
+    pkg: "{{ elasticsearch_required_libs }}"
+    state: present
+
+- name: Elasticsearch | Set m_lock_enabled
+  set_fact: elasticsearch_m_lock_enabled={{ elasticsearch_config['bootstrap.memory_lock'] is defined and elasticsearch_config['bootstrap.memory_lock'] == true }}
+
+- name: Elasticsearch | Ensure Elasticsearch group
+  group:
+    name: "{{ elasticsearch_group }}"
+
+- name: Elasticsearch | Ensure Elasticsearch user
+  user:
+    name: "{{ elasticsearch_user }}"
+    group: "{{ elasticsearch_group }}"
+    shell: /bin/false
+    createhome: true
+
+- name: Elasticsearch | Check installed version
+  uri:
+    url: "http://{{ elasticsearch_api_host }}:{{ elasticsearch_api_port }}"
+    method: GET
+    return_content: true
+    status_code: 200, 503  # 503 when cluster unavailable
+    body_format: json
+  register: elasticsearch_version_check
+  ignore_errors: true
+  changed_when: false
+
+- name: Elasticsearch | Stop service
+  systemd:
+    name: elasticsearch
+    state: stopped
+  when: |
+      elasticsearch_force_reinstall or
+      elasticsearch_version_check is failed or
+      elasticsearch_version_check.json.version.number != elasticsearch_version
+  ignore_errors: true
+
+- name: Elasticsearch | Remove old version
+  file:
+    path: "{{ elasticsearch_home }}"
+    state: absent
+  when: |
+      elasticsearch_force_reinstall or
+      elasticsearch_version_check is failed or
+      elasticsearch_version_check.json.version.number != elasticsearch_version
+
+- name: Elasticsearch | Ensure Elasticsearch home dir exist
+  file:
+    path: "{{ elasticsearch_home }}"
+    state: directory
+    owner: "{{ elasticsearch_user }}"
+    group: "{{ elasticsearch_group }}"
+  when: |
+      elasticsearch_force_reinstall or
+      elasticsearch_version_check is failed or
+      elasticsearch_version_check.json.version.number != elasticsearch_version
+
+- name: Elasticsearch | Untar Elasticsearch
+  unarchive:
+    extra_opts: ['--strip-components=1']
+    src: "{{ elasticsearch_package_url }}"
+    remote_src: true
+    dest: "{{ elasticsearch_home }}"
+    owner: "{{ elasticsearch_user }}"
+    group: "{{ elasticsearch_group }}"
+  when: |
+      elasticsearch_force_reinstall or
+      elasticsearch_version_check is failed or
+      elasticsearch_version_check.json.version.number != elasticsearch_version
+
+- name: Elasticsearch | Create systemd service
+  template:
+    src: elasticsearch.service.j2
+    dest: "{{ elasticsearch_systemd_file }}"
+  notify:
+    - restart elasticsearch

@@ -1,0 +1,7 @@
+---
+
+- name: restart elasticsearch
+  systemd:
+    name: elasticsearch
+    state: restarted
+  when: elasticsearch_service_state != 'stopped'
