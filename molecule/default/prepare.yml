@@ -2,4 +2,11 @@
 - name: Prepare
   hosts: all
   gather_facts: false
-  tasks: []
+  tasks: 
+  - name: Limits on mmap counts
+    sysctl:
+      name: vm.max_map_count
+      value: 262144
+      sysctl_set: true
+      state: present
+      reload: true

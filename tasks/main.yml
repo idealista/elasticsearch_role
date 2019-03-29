@@ -3,19 +3,19 @@
 - name: Elasticsearch | Install
   import_tasks: install.yml
   tags:
-    - install
+    - elasticsearch_install
 
 - name: Elasticsearch | Configure
   import_tasks: config.yml
   tags:
-    - configure
+    - elasticsearch_configure
 
 - name: Elasticsearch | Plugins
   import_tasks: plugins.yml
   tags:
-    - plugins
+    - elasticsearch_plugins
 
 - name: Elasticsearch | Service
   import_tasks: service.yml
   tags:
-    - service
+    - elasticsearch_service
