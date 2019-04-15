@@ -1,0 +1,76 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+platforms:
+  - name: esmasterdata1
+    hostname: esmasterdata1
+    image: idealista/jdk:8u181-stretch-openjdk-headless
+    privileged: true
+    capabilities:
+      - SYS_ADMIN
+    volumes:
+      - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
+    groups:
+      - elasticsearch
+      - master_data_nodes
+    command: '/lib/systemd/systemd'
+    networks:
+      - name: es-network
+        aliases:
+          - esmasterdata1
+    published_ports:
+      - 9201:9200
+      - 9301:9300
+
+  - name: esmasterdata2
+    hostname: esmasterdata2
+    image: idealista/jdk:8u181-stretch-openjdk-headless
+    privileged: true
+    capabilities:
+      - SYS_ADMIN
+    volumes:
+      - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
+    groups:
+      - elasticsearch
+      - master_data_nodes
+    command: '/lib/systemd/systemd'
+    networks:
+      - name: es-network
+        aliases:
+          - esmasterdata2
+    published_ports:
+      - 9202:9200
+      - 9302:9300
+
+  - name: esmasterdata3
+    hostname: esmasterdata3
+    image: idealista/jdk:8u181-stretch-openjdk-headless
+    privileged: true
+    capabilities:
+      - SYS_ADMIN
+    volumes:
+      - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
+    groups:
+      - elasticsearch
+      - master_data_nodes
+    command: '/lib/systemd/systemd'
+    networks:
+      - name: es-network
+        aliases:
+          - esmasterdata3
+    published_ports:
+      - 9203:9200
+      - 9303:9300
+
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+scenario:
+  name: build-name-override
+verifier:
+  name: goss
+  lint:
+    name: yamllint

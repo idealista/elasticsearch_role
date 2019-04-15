@@ -1,0 +1,23 @@
+---
+
+elasticsearch_api_port: 9200
+elasticsearch_tcp_port: 9300
+
+elasticsearch_config:
+  node.name: "{{ elasticsearch_api_host }}"
+  cluster.name: idealista-cluster
+  network.host: _site_
+  discovery.seed_hosts: ["esmasterdata1", "esmasterdata2", "esmasterdata3"]
+  cluster.initial_master_nodes: ["esmasterdata1", "esmasterdata2", "esmasterdata3"]
+  http.port: "{{ elasticsearch_api_port }}"
+  transport.tcp.port: "{{ elasticsearch_tcp_port }}"
+  bootstrap.memory_lock: true
+  node.data: true
+  node.master: true
+  node.ingest: false
+  cluster.remote.connect: false
+  http.cors.enabled: true
+  http.cors.allow-origin: "*"
+
+elasticsearch_version: 7.0.0
+elasticsearch_build_name: "elasticsearch-oss-{{ elasticsearch_version }}-linux-x86_64"
