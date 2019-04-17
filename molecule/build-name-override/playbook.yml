@@ -1,0 +1,20 @@
+---
+
+- hosts: esmasterdata1
+  roles:
+    - role: elasticsearch_role
+      vars:
+        elasticsearch_api_host: esmasterdata1
+
+- hosts: esmasterdata2
+  roles:
+    - role: elasticsearch_role
+      vars:
+        elasticsearch_api_host: esmasterdata2
+
+- hosts: esmasterdata3
+  roles:
+    - role: elasticsearch_role
+      vars:
+        elasticsearch_api_host: esmasterdata3
+
