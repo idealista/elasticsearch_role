@@ -60,6 +60,11 @@
       elasticsearch_version_check is failed or
       elasticsearch_version_check.json.version.number != elasticsearch_version
 
+- name: Elasticsearch | Define elasticsearch_build_name
+  set_fact:
+    elasticsearch_build_name: "{{ __elasticsearch_build_name }}"
+  when: elasticsearch_build_name is not defined
+
 - name: Elasticsearch | Untar Elasticsearch
   unarchive:
     extra_opts: ['--strip-components=1']
