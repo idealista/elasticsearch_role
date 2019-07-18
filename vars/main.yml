@@ -3,7 +3,12 @@
 elasticsearch_required_libs:
   - unzip
 
-__elasticsearch_build_name: "elasticsearch-{{ elasticsearch_version }}"
+elasticsearch_basic_license: elasticsearch
+elasticsearch_oss_license: elasticsearch-oss
+
+elasticsearch6_build_name: "{{ elasticsearch_license }}-{{ elasticsearch_version }}"
+elasticsearch7_build_name: "{{ elasticsearch_license }}-{{ elasticsearch_version }}-linux-x86_64"
+
 elasticsearch_package: "{{ elasticsearch_build_name }}.tar.gz"
 elasticsearch_package_url: "https://artifacts.elastic.co/downloads/elasticsearch/{{ elasticsearch_package }}"
 

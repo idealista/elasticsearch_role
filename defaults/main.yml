@@ -1,7 +1,8 @@
 ---
 
 ## General
-elasticsearch_version: 6.7.1
+elasticsearch_version: 7.2.0
+elasticsearch_license_type: basic
 elasticsearch_force_reinstall: false
 
 # Owner

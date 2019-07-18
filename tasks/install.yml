@@ -6,7 +6,8 @@
     state: present
 
 - name: Elasticsearch | Set m_lock_enabled
-  set_fact: elasticsearch_m_lock_enabled={{ elasticsearch_config['bootstrap.memory_lock'] is defined and elasticsearch_config['bootstrap.memory_lock'] == true }}
+  set_fact:
+    elasticsearch_m_lock_enabled: "{{ elasticsearch_config['bootstrap.memory_lock'] is defined and elasticsearch_config['bootstrap.memory_lock'] == true }}"
 
 - name: Elasticsearch | Ensure Elasticsearch group
   group:
@@ -60,10 +61,29 @@
       elasticsearch_version_check is failed or
       elasticsearch_version_check.json.version.number != elasticsearch_version
 
-- name: Elasticsearch | Define elasticsearch_build_name
+- name: Elasticsearch | Define elasticsearch_license when basic
   set_fact:
-    elasticsearch_build_name: "{{ __elasticsearch_build_name }}"
-  when: elasticsearch_build_name is not defined
+    elasticsearch_license: "{{ elasticsearch_basic_license }}"
+  when: elasticsearch_license_type == 'basic'
+
+- name: Elasticsearch | Define elasticsearch_license when oss
+  set_fact:
+    elasticsearch_license: "{{ elasticsearch_oss_license }}"
+  when: elasticsearch_license_type == 'oss'
+
+- name: Elasticsearch | Define elasticsearch_major_version
+  set_fact:
+    elasticsearch_major_version: "{{ elasticsearch_version.split('.')[0] }}"
+
+- name: Elasticsearch | Define elasticsearch_build_name when version 6.x
+  set_fact:
+    elasticsearch_build_name: "{{ elasticsearch6_build_name }}"
+  when: elasticsearch_major_version == '6'
+
+- name: Elasticsearch | Define elasticsearch_build_name when version 7.x
+  set_fact:
+    elasticsearch_build_name: "{{ elasticsearch7_build_name }}"
+  when: elasticsearch_major_version == '7'
 
 - name: Elasticsearch | Untar Elasticsearch
   unarchive:
