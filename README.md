@@ -236,8 +236,8 @@ An example of a three server deployment is shown below. The three servers work a
     elasticsearch_config:
       node.name: node1
       cluster.name: idealista-cluster
-      discovery.seed_hosts: ["esmasterdata1", "esmasterdata2", "esmasterdata3"]
-      cluster.initial_master_nodes: ["esmasterdata1", "esmasterdata2", "esmasterdata3"]
+      discovery.seed_hosts: ["node1", "node2", "node3"]
+      cluster.initial_master_nodes: ["node1", "node2", "node3"]
       network.host: _site_
       http.port: 9200
       transport.tcp.port: 9300
@@ -259,8 +259,8 @@ An example of a three server deployment is shown below. The three servers work a
     elasticsearch_config:
       node.name: node2
       cluster.name: idealista-cluster
-      discovery.seed_hosts: ["esmasterdata1", "esmasterdata2", "esmasterdata3"]
-      cluster.initial_master_nodes: ["esmasterdata1", "esmasterdata2", "esmasterdata3"]
+      discovery.seed_hosts: ["node1", "node2", "node3"]
+      cluster.initial_master_nodes: ["node1", "node2", "node3"]
       network.host: _site_
       http.port: 9200
       transport.tcp.port: 9300
@@ -282,8 +282,8 @@ An example of a three server deployment is shown below. The three servers work a
     elasticsearch_config:
       node.name: node3
       cluster.name: idealista-cluster
-      discovery.seed_hosts: ["esmasterdata1", "esmasterdata2", "esmasterdata3"]
-      cluster.initial_master_nodes: ["esmasterdata1", "esmasterdata2", "esmasterdata3"]
+      discovery.seed_hosts: ["node1", "node2", "node3"]
+      cluster.initial_master_nodes: ["node1", "node2", "node3"]
       network.host: _site_
       http.port: 9200
       transport.tcp.port: 9300
