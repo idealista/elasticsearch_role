@@ -1,7 +1,6 @@
 ---
 
 elasticsearch_api_port: 9200
-elasticsearch_tcp_port: 9300
 elasticsearch_version: 7.2.0
 
 elasticsearch_config:
@@ -11,7 +10,6 @@ elasticsearch_config:
   discovery.seed_hosts: ["esmasterdata1", "esmasterdata2", "esmasterdata3"]
   cluster.initial_master_nodes: ["esmasterdata1", "esmasterdata2", "esmasterdata3"]
   http.port: "{{ elasticsearch_api_port }}"
-  transport.tcp.port: "{{ elasticsearch_tcp_port }}"
   bootstrap.memory_lock: true
   node.data: true
   node.master: true
@@ -23,3 +21,5 @@ elasticsearch_config:
   xpack.monitoring.enabled: false
   xpack.watcher.enabled: false
   xpack.ml.enabled: false
+
+elasticsearch_heap_size: "1g"
