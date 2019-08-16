@@ -20,7 +20,8 @@ elasticsearch_home: /opt/elasticsearch
 elasticsearch_conf_dir: "{{ elasticsearch_home }}/config"
 elasticsearch_log_dir: /var/log/elasticsearch
 elasticsearch_data_dir: /var/lib/elasticsearch
-elasticsearch_pid_dir: /var/run/elasticsearch
+elasticsearch_runtime_dir: elasticsearch
+elasticsearch_pid_dir: "/var/run/{{ elasticsearch_runtime_dir }}"
 
 # Hosts & ports
 elasticsearch_api_host: localhost
