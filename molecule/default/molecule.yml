@@ -6,7 +6,7 @@ driver:
 platforms:
   - name: esmasterdata1
     hostname: esmasterdata1
-    image: idealista/jdk:8u181-stretch-openjdk-headless
+    image: idealista/jdk:8u222-stretch-openjdk-headless
     privileged: true
     capabilities:
       - SYS_ADMIN
@@ -26,7 +26,7 @@ platforms:
 
   - name: esmasterdata2
     hostname: esmasterdata2
-    image: idealista/jdk:8u181-stretch-openjdk-headless
+    image: idealista/jdk:8u222-stretch-openjdk-headless
     privileged: true
     capabilities:
       - SYS_ADMIN
@@ -46,7 +46,7 @@ platforms:
 
   - name: esmasterdata3
     hostname: esmasterdata3
-    image: idealista/jdk:8u181-stretch-openjdk-headless
+    image: idealista/jdk:8u222-stretch-openjdk-headless
     privileged: true
     capabilities:
       - SYS_ADMIN
