@@ -12,13 +12,15 @@
 - name: Elasticsearch | Ensure Elasticsearch group
   group:
     name: "{{ elasticsearch_group }}"
+    system: true
 
 - name: Elasticsearch | Ensure Elasticsearch user
   user:
     name: "{{ elasticsearch_user }}"
     group: "{{ elasticsearch_group }}"
     shell: /bin/false
-    createhome: true
+    system: true
+    create_home: false
 
 - name: Elasticsearch | Check installed version
   uri:

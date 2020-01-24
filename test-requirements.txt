@@ -1,4 +1,4 @@
-ansible==2.7.12
-molecule==2.19.0
-docker==3.3.0
-jmespath
+ansible==2.8.8
+molecule==2.22
+docker==4.1.0
+jmespath==0.9.4

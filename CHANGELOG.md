@@ -3,6 +3,12 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased](https://github.com/idealista/elasticsearch_role/tree/develop)
 
+### Added
+- *[#10](https://github.com/idealista/elasticsearch_role/issues/10) Add system:true on create elasticsearch_user to get
+ UID and GID on system range* @adrian-arapiles
+- *Add goss test to check elasticsearch_user UID and GID are on system range* @adrian-arapiles
+- *Update requirements* @adrian-arapiles
+
 ## [1.3.1](https://github.com/idealista/elasticsearch_role/tree/1.3.1)
 ### Fixed
 - *Fix pid directory creation error in start* @acuervof
