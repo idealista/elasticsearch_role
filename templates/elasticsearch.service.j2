@@ -13,13 +13,14 @@ Environment=DATA_DIR={{ elasticsearch_data_dir }}
 Environment=LOG_DIR={{ elasticsearch_log_dir }}
 Environment=PID_DIR={{ elasticsearch_pid_dir }}
 
+RuntimeDirectory={{ elasticsearch_runtime_dir }}
 WorkingDirectory={{ elasticsearch_home }}
 
 User={{ elasticsearch_user }}
 Group={{ elasticsearch_group }}
 
 ExecStart={{ elasticsearch_home }}/bin/elasticsearch -p ${PID_DIR}/elasticsearch.pid --quiet
-
+PIDFile={{ elasticsearch_pid_dir }}/elasticsearch.pid
 
 # StandardOutput is configured to redirect to journalctl since
 # some error messages may be logged in standard output before

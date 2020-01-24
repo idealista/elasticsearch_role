@@ -194,7 +194,6 @@ The following illustrates applying configuration parameters to an Elasticsearch 
     - role: idealista.elasticsearch_role
   vars:
     elasticsearch_version: 7.0.0
-    elasticsearch_build_name: "elasticsearch-oss-{{ elasticsearch_version }}-linux-x86_64"
     elasticsearch_data_dir: /var/lib/elasticsearch
     elasticsearch_log_dir: /var/log/elasticsearch
     elasticsearch_config:
@@ -232,14 +231,12 @@ An example of a three server deployment is shown below. The three servers work a
     - role: idealista.elasticsearch_role
   vars:
     elasticsearch_version: 7.0.0
-    elasticsearch_build_name: "elasticsearch-oss-{{ elasticsearch_version }}-linux-x86_64"
     elasticsearch_data_dir: /var/lib/elasticsearch
     elasticsearch_log_dir: /var/log/elasticsearch
     elasticsearch_config:
       node.name: node1
       cluster.name: idealista-cluster
-      discovery.zen.ping.unicast.hosts: ["node1", "node2", "node3"]
-      #Deprecated on 7.x discovery.zen.minimum_master_nodes: 2
+      discovery.seed_hosts: ["node1", "node2", "node3"]
       cluster.initial_master_nodes: ["node1", "node2", "node3"]
       network.host: _site_
       http.port: 9200
@@ -257,14 +254,12 @@ An example of a three server deployment is shown below. The three servers work a
     - role: idealista.elasticsearch_role
   vars:
     elasticsearch_version: 7.0.0
-    elasticsearch_build_name: "elasticsearch-oss-{{ elasticsearch_version }}-linux-x86_64"
     elasticsearch_data_dir: /var/lib/elasticsearch
     elasticsearch_log_dir: /var/log/elasticsearch
     elasticsearch_config:
       node.name: node2
       cluster.name: idealista-cluster
-      discovery.zen.ping.unicast.hosts: ["node1", "node2", "node3"]
-      #Deprecated on 7.x discovery.zen.minimum_master_nodes: 2
+      discovery.seed_hosts: ["node1", "node2", "node3"]
       cluster.initial_master_nodes: ["node1", "node2", "node3"]
       network.host: _site_
       http.port: 9200
@@ -282,14 +277,12 @@ An example of a three server deployment is shown below. The three servers work a
     - role: idealista.elasticsearch_role
   vars:
     elasticsearch_version: 7.0.0
-    elasticsearch_build_name: "elasticsearch-oss-{{ elasticsearch_version }}-linux-x86_64"
     elasticsearch_data_dir: /var/lib/elasticsearch
     elasticsearch_log_dir: /var/log/elasticsearch
     elasticsearch_config:
       node.name: node3
       cluster.name: idealista-cluster
-      discovery.zen.ping.unicast.hosts: ["node1", "node2", "node3"]
-      #Deprecated on 7.x discovery.zen.minimum_master_nodes: 2
+      discovery.seed_hosts: ["node1", "node2", "node3"]
       cluster.initial_master_nodes: ["node1", "node2", "node3"]
       network.host: _site_
       http.port: 9200
