@@ -3,19 +3,28 @@
 group:
   {{ elasticsearch_group }}:
     exists: true
-
+    gid:
+      lt: 1000
 user:
   {{ elasticsearch_user }}:
     exists: true
     groups:
       - {{ elasticsearch_group }}
+    uid:
+      lt: 1000
+
+http:
+  http://{{ inventory_hostname }}:9200:
+    status: 200
+  http://{{ inventory_hostname }}:9200/_cluster/health:
+    status: 200
 
 port:
   tcp:{{ elasticsearch_api_port }}:
     listening: true
   tcp:{{ elasticsearch_tcp_port }}:
     listening: true
-    
+
 service:
   elasticsearch:
     enabled: true

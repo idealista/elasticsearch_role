@@ -30,7 +30,7 @@ These instructions will get you a copy of the role for your ansible playbook. On
 
 #### To execute this role:
 
-Ansible 2.7.5.0 version installed.
+Ansible 2.8.8 version installed.
 
 #### For testing purposes:
 
@@ -48,7 +48,7 @@ Create or add to your roles dependency file (e.g requirements.yml):
 ```yml
 - src: http://github.com/idealista/elasticsearch_role.git
   scm: git
-  version: 1.1.0
+  version: 1.3.1
   name: elasticsearch
 ```
 
@@ -83,7 +83,8 @@ The following illustrates applying configuration parameters to an Elasticsearch 
   hosts: localhost
   roles:
     - role: idealista.elasticsearch_role
-  vars:
+  vars:      
+    elasticsearch_version: 6.8.6
     elasticsearch_data_dir: /var/lib/elasticsearch
     elasticsearch_log_dir: /var/log/elasticsearch
     elasticsearch_config:
@@ -124,6 +125,7 @@ An example of a three server deployment is shown below. The three servers work a
     elasticsearch_data_dir: /var/lib/elasticsearch
     elasticsearch_log_dir: /var/log/elasticsearch
     elasticsearch_config:
+      elasticsearch_version: 6.8.6
       node.name: node1
       cluster.name: idealista-cluster
       discovery.zen.ping.unicast.hosts: ["node1", "node2", "node3"]
@@ -146,6 +148,7 @@ An example of a three server deployment is shown below. The three servers work a
     elasticsearch_data_dir: /var/lib/elasticsearch
     elasticsearch_log_dir: /var/log/elasticsearch
     elasticsearch_config:
+      elasticsearch_version: 6.8.6
       node.name: node2
       cluster.name: idealista-cluster
       discovery.zen.ping.unicast.hosts: ["node1", "node2", "node3"]
@@ -168,6 +171,7 @@ An example of a three server deployment is shown below. The three servers work a
     elasticsearch_data_dir: /var/lib/elasticsearch
     elasticsearch_log_dir: /var/log/elasticsearch
     elasticsearch_config:
+      elasticsearch_version: 6.8.6
       node.name: node3
       cluster.name: idealista-cluster
       discovery.zen.ping.unicast.hosts: ["node1", "node2", "node3"]
@@ -193,7 +197,6 @@ The following illustrates applying configuration parameters to an Elasticsearch 
   roles:
     - role: idealista.elasticsearch_role
   vars:
-    elasticsearch_version: 7.0.0
     elasticsearch_data_dir: /var/lib/elasticsearch
     elasticsearch_log_dir: /var/log/elasticsearch
     elasticsearch_config:
@@ -305,7 +308,7 @@ pipenv run molecule test
 
 ## Built With
 
-![Ansible](https://img.shields.io/badge/ansible-2.7.5.0-green.svg)
+![Ansible](https://img.shields.io/badge/ansible-2.8.8-green.svg)
 
 ## Versioning
 
