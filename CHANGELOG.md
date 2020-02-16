@@ -2,12 +2,13 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased](https://github.com/idealista/elasticsearch_role/tree/develop)
+### Added
+- *Added operating system configurations* @frantsao
 
 ## [1.4.0](https://github.com/idealista/elasticsearch_role/tree/1.4.0)
 [Full Changelog](https://github.com/idealista/elasticsearch_role/compare/1.3.1...1.4.0)
 ### Added
-- *[#10](https://github.com/idealista/elasticsearch_role/issues/10) Add system:true on create elasticsearch_user to get
- UID and GID on system range* @adrian-arapiles
+- *[#10](https://github.com/idealista/elasticsearch_role/issues/10) Add system:true on create elasticsearch_user to get UID and GID on system range* @adrian-arapiles
 - *Add goss test to check elasticsearch_user UID and GID are on system range* @adrian-arapiles
 - *Update requirements* @adrian-arapiles
 
