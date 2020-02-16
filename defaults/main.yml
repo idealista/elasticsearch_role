@@ -5,6 +5,34 @@ elasticsearch_version: 7.5.2
 elasticsearch_license_type: basic
 elasticsearch_force_reinstall: false
 
+# Operating system tuning
+elasticsearch_os_tuning: true
+elasticsearch_sysctl_params:
+  - name: net.core.rmem_max
+    value: 16777216
+  - name: net.core.wmem_max
+    value: 16777216
+  - name: net.core.somaxconn
+    value: 4096
+  - name: net.core.netdev_max_backlog
+    value: 16384
+  - name: net.ipv4.tcp_max_syn_backlog
+    value: 8192
+  - name: net.ipv4.tcp_syncookies
+    value: 1
+  - name: net.ipv4.tcp_tw_recycle
+    value: 1
+  - name: net.ipv4.tcp_rmem
+    value: "4096 87380 16777216"
+  - name: net.ipv4.tcp_wmem
+    value: "4096 87380 16777216"
+  - name: net.ipv4.tcp_congestion_control
+    value: cubic
+  - name: vm.max_map_count
+    value: 262144
+  - name: vm.swappiness
+    value: 1
+
 # Owner
 elasticsearch_user: elasticsearch
 elasticsearch_group: elasticsearch
