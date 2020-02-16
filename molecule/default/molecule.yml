@@ -23,7 +23,9 @@ platforms:
     published_ports:
       - 9201:9200
       - 9301:9300
-
+    tmpfs:
+      - /run
+      - /run/lock
   - name: esmasterdata2
     hostname: esmasterdata2
     image: idealista/jdk:8u222-stretch-openjdk-headless
@@ -43,7 +45,9 @@ platforms:
     published_ports:
       - 9202:9200
       - 9302:9300
-
+    tmpfs:
+      - /run
+      - /run/lock
   - name: esmasterdata3
     hostname: esmasterdata3
     image: idealista/jdk:8u222-stretch-openjdk-headless
@@ -63,7 +67,9 @@ platforms:
     published_ports:
       - 9203:9200
       - 9303:9300
-
+    tmpfs:
+      - /run
+      - /run/lock
 provisioner:
   name: ansible
   lint:
