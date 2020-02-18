@@ -41,7 +41,7 @@ elasticsearch_sysctl_params:
 #     value: 262144
 #   - name: vm.swappiness
 #     value: 1
-  
+
 # Systemd service config
 elasticsearch_max_open_files: 65536
 elasticsearch_max_threads: 8192
