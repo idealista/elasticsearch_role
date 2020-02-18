@@ -12,12 +12,23 @@ user:
       - {{ elasticsearch_group }}
     uid:
       lt: 1000
+command:
+  sysctl:
+    # required attributes
+    exit-status: 0
+    # defaults to hash key
+    exec: "sysctl -a"
+    # optional attributes
+    stdout:
+      - "vm.max_map_count = 262144"
+    stderr: []
+    timeout: 10000 # in milliseconds
+    skip: false
 
-http:
-  http://{{ inventory_hostname }}:9200:
-    status: 200
-  http://{{ inventory_hostname }}:9200/_cluster/health:
-    status: 200
+service:
+  elasticsearch:
+    enabled: true
+    running: true
 
 port:
   tcp:{{ elasticsearch_api_port }}:
@@ -25,7 +36,8 @@ port:
   tcp:{{ elasticsearch_tcp_port }}:
     listening: true
 
-service:
-  elasticsearch:
-    enabled: true
-    running: true
+http:
+  http://{{ inventory_hostname }}:{{ elasticsearch_api_port }}:
+    status: 200
+  http://{{ inventory_hostname }}:{{ elasticsearch_api_port }}/_cluster/health:
+    status: 200
