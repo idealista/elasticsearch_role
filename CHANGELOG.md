@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased](https://github.com/idealista/elasticsearch_role/tree/develop)
 ### Added
 - *Added operating system configurations* @frantsao
+- *Updated ElasticSearch default version* @frantsao
 
 ## [1.4.0](https://github.com/idealista/elasticsearch_role/tree/1.4.0)
 [Full Changelog](https://github.com/idealista/elasticsearch_role/compare/1.3.1...1.4.0)
