@@ -48,7 +48,7 @@ Create or add to your roles dependency file (e.g requirements.yml):
 ```yml
 - src: http://github.com/idealista/elasticsearch_role.git
   scm: git
-  version: 1.3.1
+  version: 1.5.0
   name: elasticsearch
 ```
 
