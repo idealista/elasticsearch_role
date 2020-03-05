@@ -302,9 +302,11 @@ An example of a three server deployment is shown below. The three servers work a
 ## Testing
 
 ```sh
-pipenv install -r test-requirements.txt
-pipenv run molecule test
+pipenv shell
+pipenv sync
+molecule test
 ```
+Note: these tests use privileged containers because ElasticSearch usually needs modifying vm.max_map_count kernel parameter in order to boot service.
 
 ## Built With
 
