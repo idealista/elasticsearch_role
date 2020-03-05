@@ -1,53 +1,9 @@
 ---
 
 ## General
-elasticsearch_version: 7.6.0
-elasticsearch_license_type: oss
+elasticsearch_version: 7.5.2
+elasticsearch_license_type: basic
 elasticsearch_force_reinstall: false
-
-# Operating system tuning. See:
-# https://www.elastic.co/guide/en/elasticsearch/reference/master/system-config.html
-#
-elasticsearch_os_tuning: true
-elasticsearch_sysctl_params:
-  - name: vm.max_map_count
-    value: 262144
-  - name: vm.swappiness
-    value: 1
-#
-# Example for network-intensive use cases
-# elasticsearch_sysctl_params:
-#   - name: net.core.rmem_max
-#     value: 16777216
-#   - name: net.core.wmem_max
-#     value: 16777216
-#   - name: net.core.somaxconn
-#     value: 4096
-#   - name: net.core.netdev_max_backlog
-#     value: 16384
-#   - name: net.ipv4.tcp_max_syn_backlog
-#     value: 8192
-#   - name: net.ipv4.tcp_syncookies
-#     value: 1
-#   - name: net.ipv4.tcp_tw_recycle
-#     value: 1
-#   - name: net.ipv4.tcp_rmem
-#     value: "4096 87380 16777216"
-#   - name: net.ipv4.tcp_wmem
-#     value: "4096 87380 16777216"
-#   - name: net.ipv4.tcp_congestion_control
-#     value: cubic
-#   - name: vm.max_map_count
-#     value: 262144
-#   - name: vm.swappiness
-#     value: 1
-
-# Systemd service config
-elasticsearch_max_open_files: 65536
-elasticsearch_max_threads: 8192
-
-# Here you can set bootstrap.memory_lock to true if you need it
-elasticsearch_config: {}
 
 # Owner
 elasticsearch_user: elasticsearch
@@ -71,6 +27,12 @@ elasticsearch_pid_dir: "/var/run/{{ elasticsearch_runtime_dir }}"
 elasticsearch_api_host: localhost
 elasticsearch_api_port: 9200
 elasticsearch_tcp_port: 9300
+
+# Config
+elasticsearch_max_open_files: 65536
+elasticsearch_max_threads: 8192
+
+elasticsearch_config: {}
 
 # Plugins
 elasticsearch_plugins: []

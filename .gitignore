@@ -12,3 +12,5 @@ tests/__pycache__
 .vscode
 
 *.pyc
+Pipfile
+Pipfile.lock
