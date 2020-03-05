@@ -1,7 +1,7 @@
 ---
-elasticsearch_version: 7.5.2
-elasticsearch_license_type: oss
+
 elasticsearch_api_port: 9200
+elasticsearch_version: 7.5.0
 
 elasticsearch_config:
   node.name: "{{ elasticsearch_api_host }}"
@@ -17,9 +17,9 @@ elasticsearch_config:
   cluster.remote.connect: false
   http.cors.enabled: true
   http.cors.allow-origin: "*"
+  xpack.security.enabled: false
+  xpack.monitoring.enabled: false
+  xpack.watcher.enabled: false
+  xpack.ml.enabled: false
 
 elasticsearch_heap_size: "1g"
-elasticsearch_os_tuning: true
-elasticsearch_sysctl_params:
-  - name: vm.max_map_count
-    value: 262144
