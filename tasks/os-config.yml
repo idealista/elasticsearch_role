@@ -1,0 +1,9 @@
+---
+
+- name: "Elasticsearch | Apply sysctl settings"
+  sysctl:
+    name: "{{ item.name }}"
+    value: "{{ item.value }}"
+    sysctl_set: true
+    state: present
+  loop: "{{ elasticsearch_sysctl_params }}"
