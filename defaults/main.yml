@@ -59,6 +59,9 @@ elasticsearch_service_enabled: true
 # Current state: started, stopped
 elasticsearch_service_state: started
 
+# If want to apply any extra config to elasticsearch.service
+# elasticsearch_service_dropin_template: "{{ playbook_dir }}/templates/elasticsearch/service.conf"
+
 # Files & Paths
 elasticsearch_home: /opt/elasticsearch
 elasticsearch_conf_dir: "{{ elasticsearch_home }}/config"
