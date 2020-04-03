@@ -12,6 +12,23 @@
     - "{{ elasticsearch_pid_dir }}"
     - "{{ elasticsearch_data_dir }}"
 
+- name: Create and config drop-in service config
+  block:
+    - name: Create elasticsearch drop-in service config
+      file:
+        path: /etc/systemd/system/elasticsearch.service.d
+        owner: "{{ elasticsearch_user }}"
+        group: "{{ elasticsearch_group }}"
+        state: directory
+
+    - name: Add drop-in file config to elastic service
+      template:
+        src: "{{ elasticsearch_service_dropin_template }}"
+        dest: /etc/systemd/system/elasticsearch.service.d/{{ elasticsearch_service_dropin_template | basename }}
+        owner: "{{ elasticsearch_user }}"
+        group: "{{ elasticsearch_group }}"
+  when: elasticsearch_service_dropin_template is defined
+
 - name: Elasticsearch | Configuring Elasticsearch
   template:
     src: "{{ item.src }}"
