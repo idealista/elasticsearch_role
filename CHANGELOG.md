@@ -3,6 +3,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased](https://github.com/idealista/elasticsearch_role/tree/develop)
 
+## [1.6.0](https://github.com/idealista/elasticsearch_role/tree/1.6.0)
+[Full Changelog](https://github.com/idealista/elasticsearch_role/compare/1.5.0...1.6.0)
 ### Added
 - *[#19](https://github.com/idealista/elasticsearch_role/issues/19) Add daemon_reload: yes to elasticsearch restart handler* @adrian-arapiles
 - *Add optional drop-in template for configure elasticsearch service* @adrian-arapiles
