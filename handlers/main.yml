@@ -5,4 +5,4 @@
     name: elasticsearch
     state: restarted
     daemon_reload: true
-  when: elasticsearch_service_state != 'stopped'
+  when: elasticsearch_service_state != 'stopped' and elasticsearch_service_output.changed == False

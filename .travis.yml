@@ -9,7 +9,6 @@ install:
   - pipenv sync
 script:
   - pipenv run molecule test
-  - pipenv run molecule test
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/

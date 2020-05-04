@@ -1,11 +1,12 @@
 ---
 
-- name: Elasticsearch | Starting service
+- name: Elasticsearch | Configure service
   systemd:
     name: elasticsearch
     state: "{{ elasticsearch_service_state }}"
     enabled: "{{ elasticsearch_service_enabled }}"
     daemon_reload: true
+  register: elasticsearch_service_output
 
 - name: Elasticsearch | Force handlers
   meta: flush_handlers
