@@ -20,7 +20,7 @@ elasticsearch_config:
   http.cors.enabled: true
   http.cors.allow-origin: "*"
 
-elasticsearch_heap_size: "1g"
+elasticsearch_heap_size: "256m"
 elasticsearch_os_tuning: true
 elasticsearch_sysctl_params:
   - name: vm.max_map_count
