@@ -70,6 +70,9 @@ elasticsearch_data_dir: /var/lib/elasticsearch
 elasticsearch_runtime_dir: elasticsearch
 elasticsearch_pid_dir: "/var/run/{{ elasticsearch_runtime_dir }}"
 
+# Templates
+elasticsearch_template_log4j2: "{{ role_path }}/templates/log4j2.properties.j2"
+
 # Hosts & ports
 elasticsearch_api_host: localhost
 elasticsearch_api_port: 9200
