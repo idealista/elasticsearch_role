@@ -38,6 +38,6 @@
     mode: 0660
   loop:
     - { src: elasticsearch.yml.j2, dest: "{{ elasticsearch_conf_dir }}/elasticsearch.yml" }
-    - { src: log4j2.properties.j2, dest: "{{ elasticsearch_conf_dir }}/log4j2.properties" }
+    - { src: "{{ elasticsearch_template_log4j2 }}", dest: "{{ elasticsearch_conf_dir }}/log4j2.properties" }
     - { src: jvm.options.j2, dest: "{{ elasticsearch_conf_dir }}/jvm.options" }
   notify: restart elasticsearch

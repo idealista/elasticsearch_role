@@ -3,10 +3,15 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased](https://github.com/idealista/elasticsearch_role/tree/develop)
 
+## [1.7.1](https://github.com/idealista/elasticsearch_role/tree/1.7.1)
+[Full Changelog](https://github.com/idealista/elasticsearch_role/compare/1.7.0...1.7.1)
+### Added
+- *[#25](https://github.com/idealista/elasticsearch_role/issues/25) Variable to overwrite log4j2.properties template* @adrian-arapiles
+ 
 ## [1.7.0](https://github.com/idealista/elasticsearch_role/tree/1.7.0)
 [Full Changelog](https://github.com/idealista/elasticsearch_role/compare/1.6.0...1.7.0)
 ### Added
-- *[#22](https://github.com/idealista/elasticsearch_role/issues/19) Avoid double restart when upgrading or service was stopped* @adrian-arapiles
+- *[#22](https://github.com/idealista/elasticsearch_role/issues/22) Avoid double restart when upgrading or service was stopped* @adrian-arapiles
 
 ### Fixed
 - *Fixed typo double run test on travis.yml* @adrian-arapiles
