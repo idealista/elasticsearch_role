@@ -3,6 +3,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased](https://github.com/idealista/elasticsearch_role/tree/develop)
 
+## [1.7.1](https://github.com/idealista/elasticsearch_role/tree/1.7.1)
+[Full Changelog](https://github.com/idealista/elasticsearch_role/compare/1.7.0...1.7.1)
 ### Added
 - *[#25](https://github.com/idealista/elasticsearch_role/issues/25) Variable to overwrite log4j2.properties template* @adrian-arapiles
  
