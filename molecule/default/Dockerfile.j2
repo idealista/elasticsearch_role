@@ -6,6 +6,6 @@ FROM {{ item.registry.url }}/{{ item.image }}
 FROM {{ item.image }}
 {% endif %}
 
-RUN if [ $(command -v apt-get) ]; then apt-get update && apt-get upgrade -y && apt-get install -y iproute sudo systemd systemd-sysv && apt-get clean; fi
+RUN if [ $(command -v apt-get) ]; then apt-get update && apt-get upgrade -y && apt-get install -y iproute2 sudo systemd vim procps systemd-sysv && apt-get clean; fi
 
 RUN systemctl mask getty.target

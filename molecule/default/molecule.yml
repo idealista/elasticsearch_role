@@ -6,7 +6,7 @@ driver:
 platforms:
   - name: esmasterdata1
     hostname: esmasterdata1
-    image: idealista/jdk:8u222-stretch-openjdk-headless
+    image: idealista/jdk:11.0.7-buster-openjdk-headless
     privileged: true
     capabilities:
       - SYS_ADMIN
@@ -24,11 +24,12 @@ platforms:
       - 9201:9200
       - 9301:9300
     tmpfs:
-      - /run
-      - /run/lock
+      - '/tmp'
+      - '/run'
+      - '/run/lock'
   - name: esmasterdata2
     hostname: esmasterdata2
-    image: idealista/jdk:8u222-stretch-openjdk-headless
+    image: idealista/jdk:11.0.7-buster-openjdk-headless
     privileged: true
     capabilities:
       - SYS_ADMIN
@@ -46,11 +47,12 @@ platforms:
       - 9202:9200
       - 9302:9300
     tmpfs:
-      - /run
-      - /run/lock
+      - '/tmp'
+      - '/run'
+      - '/run/lock'
   - name: esmasterdata3
     hostname: esmasterdata3
-    image: idealista/jdk:8u222-stretch-openjdk-headless
+    image: idealista/jdk:11.0.7-buster-openjdk-headless
     privileged: true
     capabilities:
       - SYS_ADMIN
@@ -68,8 +70,9 @@ platforms:
       - 9203:9200
       - 9303:9300
     tmpfs:
-      - /run
-      - /run/lock
+      - '/tmp'
+      - '/run'
+      - '/run/lock'
 provisioner:
   name: ansible
   lint:
