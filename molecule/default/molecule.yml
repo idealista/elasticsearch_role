@@ -7,7 +7,7 @@ platforms:
   - name: esmasterdata1
     hostname: esmasterdata1
     image: idealista/jdk:11.0.7-buster-openjdk-headless
-    privileged: true
+    privileged: false
     capabilities:
       - SYS_ADMIN
     volumes:
@@ -16,6 +16,9 @@ platforms:
       - elasticsearch
       - master_data_nodes
     command: '/lib/systemd/systemd'
+    ulimits:
+      - nofile:65535:65535
+      - memlock:-1:-1
     networks:
       - name: es-network
         aliases:
@@ -30,7 +33,7 @@ platforms:
   - name: esmasterdata2
     hostname: esmasterdata2
     image: idealista/jdk:11.0.7-buster-openjdk-headless
-    privileged: true
+    privileged: false
     capabilities:
       - SYS_ADMIN
     volumes:
@@ -39,6 +42,9 @@ platforms:
       - elasticsearch
       - master_data_nodes
     command: '/lib/systemd/systemd'
+    ulimits:
+      - nofile:65535:65535
+      - memlock:-1:-1
     networks:
       - name: es-network
         aliases:
@@ -53,7 +59,7 @@ platforms:
   - name: esmasterdata3
     hostname: esmasterdata3
     image: idealista/jdk:11.0.7-buster-openjdk-headless
-    privileged: true
+    privileged: false
     capabilities:
       - SYS_ADMIN
     volumes:
@@ -62,6 +68,9 @@ platforms:
       - elasticsearch
       - master_data_nodes
     command: '/lib/systemd/systemd'
+    ulimits:
+      - nofile:65535:65535
+      - memlock:-1:-1
     networks:
       - name: es-network
         aliases:
@@ -80,6 +89,6 @@ provisioner:
 scenario:
   name: default
 verifier:
-  name: goss
+  name: ansible
   lint:
     name: yamllint

@@ -306,8 +306,7 @@ pipenv shell
 pipenv sync
 molecule test
 ```
-Note: these tests use privileged containers because ElasticSearch usually needs modifying vm.max_map_count kernel parameter in order to boot service.
-
+Note: Its necesary to execute this command in each container before elastic reboots: sysctl -w vm.max_map_count=262144
 ## Built With
 
 ![Ansible](https://img.shields.io/badge/ansible-2.8.8-green.svg)
