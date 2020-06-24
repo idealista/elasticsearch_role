@@ -1,5 +1,5 @@
 ---
-elasticsearch_version: 7.5.2
+elasticsearch_version: 7.7.1
 elasticsearch_license_type: oss
 elasticsearch_api_port: 9200
 
@@ -21,7 +21,7 @@ elasticsearch_config:
   http.cors.allow-origin: "*"
 
 elasticsearch_heap_size: "1g"
-elasticsearch_os_tuning: true
+elasticsearch_os_tuning: false
 elasticsearch_sysctl_params:
   - name: vm.max_map_count
     value: 262144
