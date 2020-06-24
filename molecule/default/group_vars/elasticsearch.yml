@@ -1,5 +1,5 @@
 ---
-elasticsearch_version: 7.5.2
+elasticsearch_version: 7.7.1
 elasticsearch_license_type: oss
 elasticsearch_api_port: 9200
 

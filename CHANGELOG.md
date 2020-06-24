@@ -6,6 +6,9 @@ All notable changes to this project will be documented in this file.
 ## [1.7.1](https://github.com/idealista/elasticsearch_role/tree/1.7.1)
 [Full Changelog](https://github.com/idealista/elasticsearch_role/compare/1.7.0...1.7.1)
 ### Added
+- *[#28](https://github.com/idealista/elasticsearch_role/issues/28) Updated version for elasticsearch to 7.7.1
+
+### Added
 - *[#25](https://github.com/idealista/elasticsearch_role/issues/25) Variable to overwrite log4j2.properties template* @adrian-arapiles
  
 ## [1.7.0](https://github.com/idealista/elasticsearch_role/tree/1.7.0)
