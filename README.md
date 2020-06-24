@@ -306,7 +306,7 @@ pipenv shell
 pipenv sync
 molecule test
 ```
-Note: Its necesary to execute this command in each container before elastic reboots: sysctl -w vm.max_map_count=262144
+Note: It's necesary to execute this command in each container before elastic reboots: sysctl -w vm.max_map_count=262144
 ## Built With
 
 ![Ansible](https://img.shields.io/badge/ansible-2.8.8-green.svg)
