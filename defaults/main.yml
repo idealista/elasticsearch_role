@@ -29,7 +29,7 @@ elasticsearch_sysctl_params:
 #     value: 8192
 #   - name: net.ipv4.tcp_syncookies
 #     value: 1
-#   - name: net.ipv4.tcp_tw_recycle
+#   - name: net.ipv4.tcp_tw_reuse
 #     value: 1
 #   - name: net.ipv4.tcp_rmem
 #     value: "4096 87380 16777216"
