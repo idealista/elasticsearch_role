@@ -5,7 +5,7 @@
 # Elasticsearch Ansible role
 
 - [Getting Started](#getting-started)
-  - [Prerequisities](#prerequisities)
+  - [Prerequisites](#prerequisites)
   - [Installing](#installing)
 - [Usage](#usage)
 - [Testing](#testing)
@@ -19,18 +19,18 @@
 
 **THIS ROLE IS FOR 6.x or 7.x**
 
-Ansible role for 6.x/7.x Elasticsearch. Currently this works on Debian based linux systems. Tested platforms are:
+Ansible role for 6.x/7.x Elasticsearch. Currently, this works on Debian based linux systems. Tested platforms are:
 
 * Debian 8
 * Debian 9
 
 These instructions will get you a copy of the role for your ansible playbook. Once launched, it will install a [Elasticsearch](https://www.elastic.co/products/elasticsearch) distributed, RESTful search and analytics engine in a Debian system.
 
-### Prerequisities
+### Prerequisites
 
 #### To execute this role:
 
-Ansible 2.8.8 version installed.
+Ansible 2.8.19 version installed.
 
 #### For testing purposes:
 

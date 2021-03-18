@@ -1,58 +1,20 @@
 ---
 
-- name: Elasticsearch | Set elasticsearch_plugins_reinstall when elasticsearch_plugins_reinstall is not defined
-  set_fact: elasticsearch_plugins_reinstall=true
-  when: elasticsearch_plugins is not defined or elasticsearch_plugins is none
-
-- name: Elasticsearch | List currently installed plugins
-  command: "ls {{ elasticsearch_home }}/plugins"
-  register: installed_plugins
-  changed_when: false
-  ignore_errors: true
-  environment:
-    CONF_DIR: "{{ elasticsearch_conf_dir }}"
-    ES_PATH_CONF: "{{ elasticsearch_conf_dir }}"
-  check_mode: false
-
-- name: Elasticsearch | Set plugins_to_remove when elasticsearch_plugins_reinstall (all)
-  set_fact: plugins_to_remove="{{ installed_plugins.stdout_lines | default([]) }}"
-  when: elasticsearch_plugins_reinstall
-
-- name: Elasticsearch | Set plugins_to_remove when not elasticsearch_plugins_reinstall (installed but not listed in the config)
-  set_fact: plugins_to_remove="{{ installed_plugins.stdout_lines | difference(elasticsearch_plugins | json_query('[*].plugin')) | default([]) }}"
-  when: not elasticsearch_plugins_reinstall
-
-- name: Elasticsearch | Set plugins_to_install when elasticsearch_plugins_reinstall (all)
-  set_fact: plugins_to_install="{{ elasticsearch_plugins | json_query('[*].plugin') | default([]) }}"
-  when: elasticsearch_plugins_reinstall
-
-- name: Elasticsearch | Set plugins_to_install when not elasticsearch_plugins_reinstall (not installed but listed in the config)
-  set_fact: plugins_to_install="{{ elasticsearch_plugins | json_query('[*].plugin') | difference(installed_plugins.stdout_lines) | default([]) }}"
-  when: not elasticsearch_plugins_reinstall
-
-- name: Elasticsearch | Remove elasticsearch plugins
-  command: "{{ elasticsearch_home }}/bin/elasticsearch-plugin remove {{item}} --silent"
-  loop: "{{ plugins_to_remove | default([]) }}"
-  notify: restart elasticsearch
-  register: plugins_removed
-  environment:
-    CONF_DIR: "{{ elasticsearch_conf_dir }}"
-    ES_PATH_CONF: "{{ elasticsearch_conf_dir }}"
-
 - name: Elasticsearch | Install elasticsearch plugins
-  command: "{{ elasticsearch_home }}/bin/elasticsearch-plugin install {{ item.url | default(item.plugin) }} --batch --silent"
-  register: plugins_installed
-  changed_when: plugins_installed.rc == 0
+  elasticsearch_plugin:
+    name: "{{ item.name }}"
+    plugin_bin: "{{ elasticsearch_home }}/bin/elasticsearch-plugin"
+    plugin_dir: "{{ elasticsearch_home }}/plugins"
+    state: "{{ item.state | default ('present') }}"
+    version: "{{ item.version | default (elasticsearch_version) }}"
+    proxy_host: "{{ item.proxy_host | default(omit) }}"
+    proxy_port: "{{ item.proxy_port | default(omit) }}"
+    src: "{{ item.src | default(omit) }}"
+    force: "{{ item.force | default(omit) }}"
   loop: "{{ elasticsearch_plugins }}"
-  when: item.plugin in plugins_to_install
-  notify: restart elasticsearch
-  environment:
-    CONF_DIR: "{{ elasticsearch_conf_dir }}"
-    ES_PATH_CONF: "{{ elasticsearch_conf_dir }}"
-    ES_JAVA_OPTS: "{% if item.proxy_host is defined and item.proxy_host != '' and item.proxy_port is defined and item.proxy_port != ''%} -Dhttp.proxyHost={{ item.proxy_host }} -Dhttp.proxyPort={{ item.proxy_port }} -Dhttps.proxyHost={{ item.proxy_host }} -Dhttps.proxyPort={{ item.proxy_port }}  {% elif es_proxy_host is defined and es_proxy_host != '' %} -Dhttp.proxyHost={{ es_proxy_host }} -Dhttp.proxyPort={{ es_proxy_port }} -Dhttps.proxyHost={{ es_proxy_host }} -Dhttps.proxyPort={{ es_proxy_port }} {% endif %}"
-  until: plugins_installed.rc == 0
-  retries: 5
-  delay: 5
+  become_user: "{{ elasticsearch_user }}"
+  when:
+    - elasticsearch_plugins | length > 0
 
 - name: Elasticsearch | Set Plugin Directory Permissions
   file:
@@ -60,4 +22,5 @@
     state: directory
     owner: "{{ elasticsearch_user }}"
     group: "{{ elasticsearch_group }}"
+    mode: 0755
     recurse: true

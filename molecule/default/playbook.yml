@@ -1,9 +1,0 @@
----
-
-- hosts: all
-  tasks:
-    - name: Create elastic nodes
-      include_role:
-        name: elasticsearch_role
-      vars:
-        elasticsearch_api_host: "{{ ansible_host }}"

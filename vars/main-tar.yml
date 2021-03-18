@@ -1,0 +1,28 @@
+---
+elasticsearch_required_libs:
+  - unzip
+
+## General
+__elasticsearch_version: 7.10.2
+__elasticsearch_license_type: oss
+
+# Service
+elasticsearch_systemd_file: /etc/systemd/system/elasticsearch.service
+# Start on boot
+__elasticsearch_service_enabled: true
+
+# Current state: started, stopped
+__elasticsearch_service_state: started
+
+# Files & Paths
+__elasticsearch_home: /opt/elasticsearch
+__elasticsearch_conf_dir: "{{ elasticsearch_home }}/config"
+__elasticsearch_log_dir: /var/log/elasticsearch
+__elasticsearch_data_dir: /var/lib/elasticsearch
+elasticsearch_runtime_dir: elasticsearch
+elasticsearch_pid_dir: "/var/run/{{ elasticsearch_runtime_dir }}"
+
+__elasticsearch_config_templates_files:
+  - elasticsearch.yml.j2
+  - tar/log4j2.properties.j2
+  - tar/jvm.options.j2

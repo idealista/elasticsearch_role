@@ -1,0 +1,9 @@
+---
+
+## General
+__opendistro_version: 1.13.1
+__opendistro_package_state: present
+
+## Debian package
+opendistro_gpg_key: "https://d3g5vo6xdbdb9a.cloudfront.net/GPG-KEY-opendistroforelasticsearch"
+opendistro_ppa_source: "deb https://d3g5vo6xdbdb9a.cloudfront.net/apt stable main"

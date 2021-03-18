@@ -1,0 +1,25 @@
+---
+- name: Elasticsearch | Include vars for {{ install_mode }}
+  include_vars: vars/main-{{ install_mode }}.yml
+
+- name: Elasticsearch | Define elasticsearch_license when oss
+  set_fact:
+    elasticsearch_license: "{{ lookup('vars', 'elasticsearch_' ~ elasticsearch_license_type ~ '_license') }}"
+
+- name: Elasticsearch | Define elasticsearch_major_version
+  set_fact:
+    elasticsearch_major_version: "{{ elasticsearch_version.split('.')[0] }}"
+
+- name: Elasticsearch | Define elasticsearch_build_name for version {{ elasticsearch_major_version }}.x
+  set_fact:
+    elasticsearch_build_name: "{{ lookup('vars', 'elasticsearch' ~  elasticsearch_major_version ~ '_build_name') }}"
+
+- name: Elasticsearch | Install
+  include_tasks: install.yml
+  tags:
+    - elasticsearch_install
+
+- name: Elasticsearch | Install
+  include_tasks: config.yml
+  tags:
+    - elasticsearch_configure

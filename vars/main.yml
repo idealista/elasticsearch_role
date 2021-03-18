@@ -1,15 +1,13 @@
 ---
 
-elasticsearch_required_libs:
-  - unzip
-
 elasticsearch_basic_license: elasticsearch
 elasticsearch_oss_license: elasticsearch-oss
+
+elasticsearch_gpg_key: "{{ __elasticsearch_gpg_key }}"
+elasticsearch_ppa_source: "{{ __elasticsearch_ppa_source }}"
 
 elasticsearch6_build_name: "{{ elasticsearch_license }}-{{ elasticsearch_version }}"
 elasticsearch7_build_name: "{{ elasticsearch_license }}-{{ elasticsearch_version }}-linux-x86_64"
 
 elasticsearch_package: "{{ elasticsearch_build_name }}.tar.gz"
 elasticsearch_package_url: "https://artifacts.elastic.co/downloads/elasticsearch/{{ elasticsearch_package }}"
-
-elasticsearch_systemd_file: /etc/systemd/system/elasticsearch.service

@@ -1,0 +1,30 @@
+---
+elasticsearch_required_libs:
+  - unzip
+  - apt-transport-https
+
+## General
+__elasticsearch_version: 7.10.2
+__elasticsearch_package_state: present
+__elasticsearch_license_type: oss
+
+## Debian package
+__elasticsearch_gpg_key: "https://artifacts.elastic.co/GPG-KEY-elasticsearch"
+__elasticsearch_ppa_source_basic: "deb https://artifacts.elastic.co/packages/{{ elasticsearch_major_version }}.x/apt stable main"
+__elasticsearch_ppa_source_oss: "deb https://artifacts.elastic.co/packages/oss-{{ elasticsearch_major_version }}.x/apt stable main"
+
+# Start on boot
+__elasticsearch_service_enabled: true
+
+# Current state: started, stopped
+__elasticsearch_service_state: started
+
+# Files & Paths
+__elasticsearch_home: /usr/share/elasticsearch
+__elasticsearch_conf_dir: /etc/elasticsearch
+__elasticsearch_log_dir: /var/log/elasticsearch
+__elasticsearch_data_dir: /var/lib/elasticsearch
+
+__elasticsearch_config_templates_files:
+  - elasticsearch.yml.j2
+  - debian/jvm.options.j2
