@@ -3,9 +3,9 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased](https://github.com/idealista/elasticsearch_role/tree/develop)
 ### Added
-- *Support for install elasticsearch as unzipped tar as previous versions for default installation mode* @adrian-arapiles
-- *Support for install elasticsearch as debian service.* @adrian-arapiles
-- *Support for install opendistroelasticsearch distribution.* @adrian-arapiles
+- *[#33](https://github.com/idealista/elasticsearch_role/issues/33) Support for install elasticsearch as unzipped tar as previous versions for default installation mode* @adrian-arapiles
+- *[#33](https://github.com/idealista/elasticsearch_role/issues/33) Support for install elasticsearch as debian service.* @adrian-arapiles
+- *[#33](https://github.com/idealista/elasticsearch_role/issues/33) Support for install opendistroelasticsearch distribution.* @adrian-arapiles
 ### Changed
 - *Update test-requirements dependencies and goss* @adrian-arapiles
 - *[#28](https://github.com/idealista/elasticsearch_role/issues/28) Update default versions to current* @adrian-arapiles

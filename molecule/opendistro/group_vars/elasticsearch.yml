@@ -16,9 +16,6 @@ elasticsearch_config:
   node.data: true
   node.master: true
   node.ingest: false
-  cluster.remote.connect: false
-  http.cors.enabled: true
-  http.cors.allow-origin: "*"
   opendistro_security.disabled: "true"
   opendistro_security.ssl.http.enabled: "false"
 

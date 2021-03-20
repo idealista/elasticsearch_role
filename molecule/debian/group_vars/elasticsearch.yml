@@ -15,9 +15,6 @@ elasticsearch_config:
   node.data: true
   node.master: true
   node.ingest: false
-  cluster.remote.connect: false
-  http.cors.enabled: true
-  http.cors.allow-origin: "*"
 
 elasticsearch_jvm_custom_parameters:
   - '-Xms256m'

@@ -88,5 +88,6 @@ provisioner:
     group_vars:
       elasticsearch:
         java_open_jdk_home: ${JAVA_JDK_HOME:-/usr/lib/jvm/java-11-openjdk-amd64}
+        elasticsearch_version: ${ELASTICSEARCH_VERSION:-7.10.2}
 verifier:
   name: ansible
