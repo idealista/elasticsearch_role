@@ -6,8 +6,7 @@ driver:
 platforms:
   - name: esmasterdata1
     hostname: esmasterdata1
-    image: idealista/jdk:8u222-stretch-openjdk-headless
-    privileged: true
+    image: idealista/jdk:8u265-stretch-openjdk-headless
     capabilities:
       - SYS_ADMIN
     volumes:
@@ -28,8 +27,7 @@ platforms:
       - /run/lock
   - name: esmasterdata2
     hostname: esmasterdata2
-    image: idealista/jdk:8u222-stretch-openjdk-headless
-    privileged: true
+    image: idealista/jdk:8u265-stretch-openjdk-headless
     capabilities:
       - SYS_ADMIN
     volumes:
@@ -50,8 +48,7 @@ platforms:
       - /run/lock
   - name: esmasterdata3
     hostname: esmasterdata3
-    image: idealista/jdk:8u222-stretch-openjdk-headless
-    privileged: true
+    image: idealista/jdk:8u265-stretch-openjdk-headless
     capabilities:
       - SYS_ADMIN
     volumes:
