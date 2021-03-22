@@ -1,6 +1,6 @@
 ![Logo](https://raw.githubusercontent.com/idealista/elasticsearch_role/master/logo.gif)
 
-[![Build Status](https://travis-ci.org/idealista/elasticsearch_role.png)](https://travis-ci.org/idealista/elasticsearch_role)
+[![Build Status](https://travis-ci.com/idealista/elasticsearch_role.png)](https://travis-ci.org/idealista/elasticsearch_role)
 
 # Elasticsearch Ansible role
 
