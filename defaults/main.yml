@@ -96,7 +96,7 @@ elasticsearch_conf_dir: "{{ __elasticsearch_conf_dir }}"
 elasticsearch_log_dir: "{{ __elasticsearch_log_dir }}"
 elasticsearch_data_dir: "{{ __elasticsearch_data_dir }}"
 elasticsearch_runtime_dir: elasticsearch
-elasticsearch_pid_dir: "/var/run/{{ elasticsearch_runtime_dir }}"
+elasticsearch_pid_dir: "/run/{{ elasticsearch_runtime_dir }}"
 
 # Hosts & ports
 elasticsearch_api_host: localhost

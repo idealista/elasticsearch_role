@@ -20,7 +20,7 @@ __elasticsearch_conf_dir: "{{ elasticsearch_home }}/config"
 __elasticsearch_log_dir: /var/log/elasticsearch
 __elasticsearch_data_dir: /var/lib/elasticsearch
 elasticsearch_runtime_dir: elasticsearch
-elasticsearch_pid_dir: "/var/run/{{ elasticsearch_runtime_dir }}"
+elasticsearch_pid_dir: "/run/{{ elasticsearch_runtime_dir }}"
 
 __elasticsearch_config_templates_files:
   - elasticsearch.yml.j2
