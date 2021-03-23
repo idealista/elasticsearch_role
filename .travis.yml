@@ -10,10 +10,22 @@ install:
   - pipenv sync
 env:
   jobs:
-    - MOLECULE_DISTRO=idealista/jdk:8u265-stretch-openjdk-headless JAVA_JDK_HOME=/usr/lib/jvm/java-8-openjdk-amd64
-    - MOLECULE_DISTRO=idealista/jdk:8u265-buster-adoptopenjdk-headless JAVA_JDK_HOME=/usr/lib/jvm/adoptopenjdk-8-hotspot-amd64
     - MOLECULE_DISTRO=idealista/jdk:11.0.6-stretch-openjdk-headless JAVA_JDK_HOME=/usr/lib/jvm/java-11-openjdk-amd64
-    - MOLECULE_DISTRO=idealista/jdk:11.0.8-buster-adoptopenjdk-headless JAVA_JDK_HOME=/usr/lib/jvm/adoptopenjdk-11-hotspot-amd64
+    - MOLECULE_DISTRO=idealista/jdk:11.0.8-buster-openjdk-headless JAVA_JDK_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+jobs:
+  include:
+    - env: MOLECULE_DISTRO=idealista/jdk:8u265-stretch-openjdk-headless JAVA_JDK_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+      script: pipenv run molecule test -s default
+    - env: MOLECULE_DISTRO=idealista/jdk:8u265-stretch-openjdk-headless JAVA_JDK_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+      script: pipenv run molecule test -s debian
+    - env: MOLECULE_DISTRO=idealista/jdk:8u265-stretch-openjdk-headless JAVA_JDK_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+      script: pipenv run molecule test -s oss
+    - env: MOLECULE_DISTRO=idealista/jdk:8u265-buster-adoptopenjdk-headless JAVA_JDK_HOME=/usr/lib/jvm/adoptopenjdk-8-hotspot-amd64
+      script: pipenv run molecule test -s default
+    - env: MOLECULE_DISTRO=idealista/jdk:8u265-buster-adoptopenjdk-headless JAVA_JDK_HOME=/usr/lib/jvm/adoptopenjdk-8-hotspot-amd64
+      script: pipenv run molecule test -s debian
+    - env: MOLECULE_DISTRO=idealista/jdk:8u265-buster-adoptopenjdk-headless JAVA_JDK_HOME=/usr/lib/jvm/adoptopenjdk-8-hotspot-amd64
+      script: pipenv run molecule test -s oss
 script:
   - pipenv run molecule test --all
 
