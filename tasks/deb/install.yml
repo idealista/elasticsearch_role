@@ -4,19 +4,6 @@
     pkg: "{{ elasticsearch_required_libs }}"
     state: present
 
-- name: Elasticsearch | Ensure Elasticsearch group
-  group:
-    name: "{{ elasticsearch_group }}"
-    system: true
-
-- name: Elasticsearch | Ensure Elasticsearch user
-  user:
-    name: "{{ elasticsearch_user }}"
-    group: "{{ elasticsearch_group }}"
-    shell: /bin/false
-    system: true
-    create_home: false
-
 - name: Elasticsearch | Add gpg key
   apt_key:
     url: "{{ elasticsearch_gpg_key }}"
@@ -37,7 +24,7 @@
     - "{{ (elasticsearch_license_type == 'oss') | ternary('elasticsearch-oss', 'elasticsearch') }}"
 
 - name: Elasticsearch | Include vars for opendistro
-  include_vars: vars/main-opendistro.yml
+  include_vars: vars/opendistro.yml
   when: install_opendistro
 
 - name: Elasticsearch | Install opendistro

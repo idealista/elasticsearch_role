@@ -1,6 +1,6 @@
 ---
 - name: Elasticsearch | Include vars for {{ install_mode }}
-  include_vars: vars/main-{{ install_mode }}.yml
+  include_vars: vars/{{ install_mode }}.yml
 
 - name: Elasticsearch | Define elasticsearch_license when oss
   set_fact:

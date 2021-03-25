@@ -2,7 +2,10 @@
 - name: Elasticsearch | Define vars
   block:
   - name: Elasticsearch | Include vars for {{ install_mode }}
-    include_vars: vars/main-{{ install_mode }}.yml
+    include_vars: vars/{{ install_mode }}.yml
+
+  - name: Elasticsearch | Include vars elasticco
+    include_vars: vars/elasticco.yml
 
   - name: Elasticsearch | Define elasticsearch major version
     set_fact:

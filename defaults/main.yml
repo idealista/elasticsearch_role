@@ -1,27 +1,31 @@
 ---
 ## General
-# Tar as default or 'debian' for install as debian package
+# Tar as default or 'deb' for install as deb package
 install_mode: tar
 
-# You can see default version in vars/main-{{ install_mode }}.yml
+# You can see default version in vars/{{ install_mode }}.yml
 elasticsearch_version: "{{ __elasticsearch_version }}"
 # By default role install oss version, change this value to 'basic' if you want official distribution
 # PD. Check version too because oss and official mismatch version release.
 elasticsearch_license_type: "{{ __elasticsearch_license_type }}"
 
 ## Opendistro
-# You can see default version in vars/main-opendistro.yml
+# You can see default version in vars/opendistro.yml
 # Please check (https://opendistro.github.io/for-elasticsearch-docs/version-history/) elastic-oss and opendistro
 # version to configure properly the compatibility of both
 opendistro_version: "{{ __opendistro_version }}"
-# State of opendistroelasticsearch debian package
+# State of opendistroelasticsearch deb package
 opendistro_package_state: "{{ __opendistro_package_state }}"
+opendistro_gpg_key: "{{ __opendistro_gpg_key }}"
+opendistro_ppa_source: "{{ __opendistro_ppa_source }}"
 # By default opendistro is not installed, set this to true for install opendistro
 install_opendistro: false
 
-## Debian
-# State of elasticsearch debian package
+## Deb
+# State of elasticsearch deb package
 elasticsearch_package_state: "{{ __elasticsearch_package_state }}"
+elasticsearch_gpg_key: "{{ __elasticsearch_gpg_key }}"
+elasticsearch_ppa_source: "{{ __elasticsearch_ppa_source }}"
 
 ## Tar
 # Folder where find templates to configure elasticsearch.yml jvm.options and log4j2.properties files

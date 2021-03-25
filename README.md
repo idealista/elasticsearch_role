@@ -24,6 +24,10 @@ Ansible role for 6.x/7.x Elasticsearch. Currently, this works on Debian based li
 * Debian 9
 * Debian 10
 
+For now, you can install as tar or deb package.
+
+**NOTE: Opendistro only available as deb package and with java 11 or newer.**
+
 These instructions will get you a copy of the role for your ansible playbook. Once launched, it will install a [Elasticsearch](https://www.elastic.co/products/elasticsearch) distributed, RESTful search and analytics engine in a Debian system.
 
 ### Prerequisites
@@ -69,7 +73,7 @@ Use in a playbook:
 ## Usage
 
 ### Important to read before use
-- Choose your `install_mode` by default is `tar` mode, but is recommended `debian` package.
+- Choose your `install_mode` by default is `tar` mode, but is recommended `deb` package.
 - Check what distribution of elasticsearch you want to install. By default, oss version is installed. 
 You can choose `basic` for official elastic version.
 - In case you want use oss with opendistro check compatibility version of packages [here](https://opendistro.github.io/for-elasticsearch-docs/version-history/).
@@ -91,9 +95,9 @@ The following illustrates applying configuration parameters to an Elasticsearch.
   roles:
     - role: idealista.elasticsearch_role
   vars:
-    ## Uncomment next line if you want to install as debian package instead of tar installation.
-    # install_mode: debian
-    ## Uncomment next line if you want to install oss with opendistro of amazon. Mandatory to set install mode as debian
+    ## Uncomment next line if you want to install as deb package instead of tar installation.
+    # install_mode: deb
+    ## Uncomment next line if you want to install oss with opendistro of amazon. Mandatory to set install mode as deb
     # install_opendistro: true
     ## Uncomment next line if you want to install basic license (official with x-pack from elastic)
     # elasticsearch_license_type: 'basic'
@@ -131,9 +135,9 @@ An example of a three server deployment is shown below. The three servers work a
   roles:
     - role: idealista.elasticsearch_role
   vars:
-    ## Uncomment next line if you want to install as debian package instead of tar installation.
-    # install_mode: debian
-    ## Uncomment next line if you want to install oss with opendistro of amazon. Mandatory to set install mode as debian
+    ## Uncomment next line if you want to install as deb package instead of tar installation.
+    # install_mode: deb
+    ## Uncomment next line if you want to install oss with opendistro of amazon. Mandatory to set install mode as deb
     # install_opendistro: true
     ## Uncomment next line if you want to install basic license (official with x-pack from elastic)
     # elasticsearch_license_type: 'basic'
@@ -156,9 +160,9 @@ An example of a three server deployment is shown below. The three servers work a
   roles:
     - role: idealista.elasticsearch_role
   vars:
-    ## Uncomment next line if you want to install as debian package instead of tar installation.
-    # install_mode: debian
-    ## Uncomment next line if you want to install oss with opendistro of amazon. Mandatory to set install mode as debian
+    ## Uncomment next line if you want to install as deb package instead of tar installation.
+    # install_mode: deb
+    ## Uncomment next line if you want to install oss with opendistro of amazon. Mandatory to set install mode as deb
     # install_opendistro: true
     ## Uncomment next line if you want to install basic license (official with x-pack from elastic)
     # elasticsearch_license_type: 'basic'
@@ -181,9 +185,9 @@ An example of a three server deployment is shown below. The three servers work a
   roles:
     - role: idealista.elasticsearch_role
   vars:
-    ## Uncomment next line if you want to install as debian package instead of tar installation.
-    # install_mode: debian
-    ## Uncomment next line if you want to install oss with opendistro of amazon. Mandatory to set install mode as debian
+    ## Uncomment next line if you want to install as deb package instead of tar installation.
+    # install_mode: deb
+    ## Uncomment next line if you want to install oss with opendistro of amazon. Mandatory to set install mode as deb
     # install_opendistro: true
     ## Uncomment next line if you want to install basic license (official with x-pack from elastic)
     # elasticsearch_license_type: 'basic'
@@ -215,9 +219,9 @@ Using `install_mode: tar` (default)
     - role: idealista.elasticsearch_role
   vars:      
     elasticsearch_version: 6.8.14
-    ## Uncomment next line if you want to install as debian package instead of tar installation.
-    # install_mode: debian
-    ## Uncomment next line if you want to install oss with opendistro of amazon. Mandatory to set install mode as debian
+    ## Uncomment next line if you want to install as deb package instead of tar installation.
+    # install_mode: deb
+    ## Uncomment next line if you want to install oss with opendistro of amazon. Mandatory to set install mode as deb
     # install_opendistro: true
     ## Uncomment next line if you want to install basic license (official with x-pack from elastic)
     # elasticsearch_license_type: 'basic'
@@ -257,9 +261,9 @@ An example of a three server deployment is shown below. The three servers work a
   vars:
     elasticsearch_config:
       elasticsearch_version: 6.8.14
-      ## Uncomment next line if you want to install as debian package instead of tar installation.
-      # install_mode: debian
-      ## Uncomment next line if you want to install oss with opendistro of amazon. Mandatory to set install mode as debian
+      ## Uncomment next line if you want to install as deb package instead of tar installation.
+      # install_mode: deb
+      ## Uncomment next line if you want to install oss with opendistro of amazon. Mandatory to set install mode as deb
       # install_opendistro: true
       ## Uncomment next line if you want to install basic license (official with x-pack from elastic)
       # elasticsearch_license_type: 'basic'
@@ -283,9 +287,9 @@ An example of a three server deployment is shown below. The three servers work a
   vars:
     elasticsearch_config:
       elasticsearch_version: 6.8.14
-      ## Uncomment next line if you want to install as debian package instead of tar installation.
-      # install_mode: debian
-      ## Uncomment next line if you want to install oss with opendistro of amazon. Mandatory to set install mode as debian
+      ## Uncomment next line if you want to install as deb package instead of tar installation.
+      # install_mode: deb
+      ## Uncomment next line if you want to install oss with opendistro of amazon. Mandatory to set install mode as deb
       # install_opendistro: true
       ## Uncomment next line if you want to install basic license (official with x-pack from elastic)
       # elasticsearch_license_type: 'basic'
@@ -309,9 +313,9 @@ An example of a three server deployment is shown below. The three servers work a
   vars:
     elasticsearch_config:
       elasticsearch_version: 6.8.14
-      ## Uncomment next line if you want to install as debian package instead of tar installation.
-      # install_mode: debian
-      ## Uncomment next line if you want to install oss with opendistro of amazon. Mandatory to set install mode as debian
+      ## Uncomment next line if you want to install as deb package instead of tar installation.
+      # install_mode: deb
+      ## Uncomment next line if you want to install oss with opendistro of amazon. Mandatory to set install mode as deb
       # install_opendistro: true
       ## Uncomment next line if you want to install basic license (official with x-pack from elastic)
       # elasticsearch_license_type: 'basic'

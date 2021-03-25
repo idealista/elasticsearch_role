@@ -1,5 +1,5 @@
 ---
-install_mode: debian
+install_mode: deb
 install_opendistro: true
 elasticsearch_api_port: 9200
 

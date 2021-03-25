@@ -1,5 +1,5 @@
 ---
-install_mode: debian
+install_mode: deb
 elasticsearch_api_port: 9200
 
 elasticsearch_service_dropin_template: "{{ playbook_dir }}/templates/elasticsearch/service.conf"

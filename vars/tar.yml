@@ -2,17 +2,15 @@
 elasticsearch_required_libs:
   - unzip
 
-## General
-__elasticsearch_version: 7.10.2
-__elasticsearch_license_type: oss
+## Tar package
+elasticsearch6_build_name: "{{ elasticsearch_license }}-{{ elasticsearch_version }}"
+elasticsearch7_build_name: "{{ elasticsearch_license }}-{{ elasticsearch_version }}-linux-x86_64"
+
+elasticsearch_package: "{{ elasticsearch_build_name }}.tar.gz"
+elasticsearch_package_url: "https://artifacts.elastic.co/downloads/elasticsearch/{{ elasticsearch_package }}"
 
 # Service
 elasticsearch_systemd_file: /etc/systemd/system/elasticsearch.service
-# Start on boot
-__elasticsearch_service_enabled: true
-
-# Current state: started, stopped
-__elasticsearch_service_state: started
 
 # Files & Paths
 __elasticsearch_home: /opt/elasticsearch
