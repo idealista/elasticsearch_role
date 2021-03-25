@@ -82,15 +82,18 @@ elasticsearch_config: {}
 elasticsearch_user: elasticsearch
 elasticsearch_group: elasticsearch
 
+## Service
 # Start on boot
 elasticsearch_service_enabled: "{{ __elasticsearch_service_enabled }}"
 
 # Current state: started, stopped
 elasticsearch_service_state: "{{ __elasticsearch_service_state }}"
 
+elasticsearch_private_tmp: false
 # If want to apply any extra config to elasticsearch.service
 elasticsearch_service_config_path: /etc/systemd/system/elasticsearch.service.d
 # If want to apply environment variables for example to set JAVA_HOME if not set use elastic bundled jdk
+# For debian 10 you can set PrivateTmp too
 # You can see examples in any molecule scenario of this repo
 # elasticsearch_service_dropin_template: "{{ playbook_dir }}/templates/elasticsearch/service.conf"
 
