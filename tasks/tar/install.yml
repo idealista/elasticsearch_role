@@ -1,0 +1,77 @@
+---
+
+- name: Elasticsearch | Installing dependencies
+  apt:
+    pkg: "{{ elasticsearch_required_libs }}"
+    state: present
+
+- name: Elasticsearch | Set m_lock_enabled
+  set_fact:
+    elasticsearch_m_lock_enabled: "{{ elasticsearch_config['bootstrap.memory_lock'] is defined and elasticsearch_config['bootstrap.memory_lock'] }}"
+
+- name: Elasticsearch | Ensure Elasticsearch group
+  group:
+    name: "{{ elasticsearch_group }}"
+    system: true
+
+- name: Elasticsearch | Ensure Elasticsearch user
+  user:
+    name: "{{ elasticsearch_user }}"
+    group: "{{ elasticsearch_group }}"
+    shell: /bin/false
+    system: true
+    create_home: false
+
+- name: Elasticsearch | Check installed version
+  stat:
+    path: "{{ elasticsearch_home }}/lib/elasticsearch-{{ elasticsearch_version }}.jar"
+  register: elasticsearch_version_check
+  changed_when: false
+
+- name: Elasticsearch | Stop service
+  systemd:
+    name: elasticsearch
+    state: stopped
+  when: |
+    elasticsearch_force_reinstall or
+    not elasticsearch_version_check.stat.exists
+  ignore_errors: true
+
+- name: Elasticsearch | Remove old version
+  file:
+    path: "{{ elasticsearch_home }}"
+    state: absent
+  when: |
+    elasticsearch_force_reinstall or
+    not elasticsearch_version_check.stat.exists
+
+- name: Elasticsearch | Ensure Elasticsearch home dir exist
+  file:
+    path: "{{ elasticsearch_home }}"
+    state: directory
+    owner: "{{ elasticsearch_user }}"
+    group: "{{ elasticsearch_group }}"
+    mode: 0755
+  when: |
+    elasticsearch_force_reinstall or
+    not elasticsearch_version_check.stat.exists
+
+- name: Elasticsearch | Untar Elasticsearch
+  unarchive:
+    extra_opts: ['--strip-components=1']
+    src: "{{ elasticsearch_package_url }}"
+    remote_src: true
+    dest: "{{ elasticsearch_home }}"
+    owner: "{{ elasticsearch_user }}"
+    group: "{{ elasticsearch_group }}"
+  when: |
+    elasticsearch_force_reinstall or
+    not elasticsearch_version_check.stat.exists
+
+- name: Elasticsearch | Create systemd service
+  template:
+    src: tar/elasticsearch.service.j2
+    dest: "{{ elasticsearch_systemd_file }}"
+    mode: 0644
+  notify:
+    - restart elasticsearch

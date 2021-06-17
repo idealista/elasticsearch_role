@@ -1,6 +1,6 @@
 ---
-
-install_mode: tar
+install_mode: deb
+elasticsearch_api_port: 9200
 
 elasticsearch_service_dropin_template: "{{ playbook_dir }}/templates/elasticsearch/service.conf"
 
@@ -16,7 +16,11 @@ elasticsearch_config:
   node.master: true
   node.ingest: false
 
-elasticsearch_heap_size: "256m"
+elasticsearch_jvm_custom_parameters:
+  - '-Xms256m'
+  - '-Xmx256m'
+  - '-Des.transport.cname_in_publish_address=true'
+
 elasticsearch_os_tuning: false
 
 elasticsearch_plugins:

@@ -1,34 +1,54 @@
 ---
 
-group:
-  {{ elasticsearch_group }}:
-    exists: true
-    gid:
-      lt: 1000
-user:
-  {{ elasticsearch_user }}:
-    exists: true
-    groups:
-      - {{ elasticsearch_group }}
-    uid:
-      lt: 1000
-command:
-  sysctl:
-    # required attributes
-    exit-status: 0
-    # defaults to hash key
-    exec: "sysctl -a"
-    # optional attributes
-    stdout:
-      - "vm.max_map_count = 262144"
-    stderr: []
-    timeout: 10000 # in milliseconds
-    skip: false
-
 service:
   elasticsearch:
     enabled: true
     running: true
+
+user:
+    {{ elasticsearch_user }}:
+      exists: true
+      groups:
+        - {{ elasticsearch_group }}
+      uid:
+        lt: 1000
+group:
+    {{ elasticsearch_group }}:
+      exists: true
+      gid:
+        lt: 1000
+
+file:
+    /opt/elasticsearch:
+      exists: true
+      mode: "0755"
+      owner: {{ elasticsearch_user }}
+      group: {{ elasticsearch_group }}
+      filetype: directory
+    /opt/elasticsearch/config:
+      exists: true
+      mode: "0755"
+      owner: {{ elasticsearch_user }}
+      group: {{ elasticsearch_group }}
+      filetype: directory
+    /var/log/elasticsearch:
+      exists: true
+      mode: "0755"
+      owner: {{ elasticsearch_user }}
+      group: {{ elasticsearch_group }}
+      filetype: directory
+    /var/lib/elasticsearch:
+      exists: true
+      mode: "0755"
+      owner: {{ elasticsearch_user }}
+      group: {{ elasticsearch_group }}
+      filetype: directory
+    /run/elasticsearch:
+      exists: true
+      mode: "0755"
+      owner: {{ elasticsearch_user }}
+      group: {{ elasticsearch_group }}
+      filetype: directory
 
 port:
   tcp:{{ elasticsearch_api_port }}:
@@ -41,3 +61,5 @@ http:
     status: 200
   http://{{ inventory_hostname }}:{{ elasticsearch_api_port }}/_cluster/health:
     status: 200
+    body:
+      - "green"

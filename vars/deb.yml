@@ -1,0 +1,17 @@
+---
+elasticsearch_required_libs:
+  - unzip
+  - apt-transport-https
+
+## General
+__elasticsearch_package_state: present
+
+# Files & Paths
+__elasticsearch_home: /usr/share/elasticsearch
+__elasticsearch_conf_dir: /etc/elasticsearch
+__elasticsearch_log_dir: /var/log/elasticsearch
+__elasticsearch_data_dir: /var/lib/elasticsearch
+
+__elasticsearch_config_templates_files:
+  - elasticsearch.yml.j2
+  - deb/jvm.options.j2

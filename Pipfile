@@ -6,10 +6,12 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-ansible = "==2.8.8"
-molecule = "==2.22"
-docker = "==4.1.0"
-jmespath = "==0.9.4"
+ansible = "==2.8.19"
+molecule = "==3.1.5"
+docker = "==4.4.4"
+jmespath = "==0.10.0"
+molecule-docker = "==0.2.4"
+ansible-lint = "==4.3.7"
 
 [requires]
 python_version = "3"

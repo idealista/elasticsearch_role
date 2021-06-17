@@ -1,0 +1,32 @@
+---
+- name: Elasticsearch | Installing dependencies
+  apt:
+    pkg: "{{ elasticsearch_required_libs }}"
+    state: present
+
+- name: Elasticsearch | Add gpg key
+  apt_key:
+    url: "{{ elasticsearch_gpg_key }}"
+    state: present
+
+- name: Elasticsearch | Add ppa repository
+  apt_repository:
+    repo: "{{ elasticsearch_ppa_source }}"
+    state: present
+    filename: elasticsearch
+
+- name: Elasticsearch | Install elasticsearch {{ elasticsearch_version }}
+  apt:
+    name: "{{ item }}={{ elasticsearch_version }}"
+    update_cache: true
+    state: "{{ elasticsearch_package_state }}"
+  loop:
+    - "{{ (elasticsearch_license_type == 'oss') | ternary('elasticsearch-oss', 'elasticsearch') }}"
+
+- name: Elasticsearch | Include vars for opendistro
+  include_vars: vars/opendistro.yml
+  when: install_opendistro
+
+- name: Elasticsearch | Install opendistro
+  include: install-opendistro.yml
+  when: install_opendistro

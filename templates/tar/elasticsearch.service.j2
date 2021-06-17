@@ -21,6 +21,7 @@ Group={{ elasticsearch_group }}
 
 ExecStart={{ elasticsearch_home }}/bin/elasticsearch -p ${PID_DIR}/elasticsearch.pid --quiet
 PIDFile={{ elasticsearch_pid_dir }}/elasticsearch.pid
+PrivateTmp={{ elasticsearch_private_tmp | default('false') }}
 
 # StandardOutput is configured to redirect to journalctl since
 # some error messages may be logged in standard output before
