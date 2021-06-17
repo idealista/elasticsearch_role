@@ -1,7 +1,7 @@
 ---
 
 ## General
-__opendistro_version: 1.13.1
+__opendistro_version: 1.13.2
 __opendistro_package_state: present
 
 ## deb opendistro package ppa
