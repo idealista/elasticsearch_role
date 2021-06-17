@@ -1,9 +1,41 @@
 ---
-
 ## General
-elasticsearch_version: 7.6.0
-elasticsearch_license_type: oss
+# Tar as default or 'deb' for install as deb package
+install_mode: tar
+
+# You can see default version in vars/{{ install_mode }}.yml
+elasticsearch_version: "{{ __elasticsearch_version }}"
+# By default role install oss version, change this value to 'basic' if you want official distribution
+# PD. Check version too because oss and official mismatch version release.
+elasticsearch_license_type: "{{ __elasticsearch_license_type }}"
+
+## Opendistro
+# You can see default version in vars/opendistro.yml
+# Please check (https://opendistro.github.io/for-elasticsearch-docs/version-history/) elastic-oss and opendistro
+# version to configure properly the compatibility of both
+opendistro_version: "{{ __opendistro_version }}"
+# State of opendistroelasticsearch deb package
+opendistro_package_state: "{{ __opendistro_package_state }}"
+opendistro_gpg_key: "{{ __opendistro_gpg_key }}"
+opendistro_ppa_source: "{{ __opendistro_ppa_source }}"
+# By default opendistro is not installed, set this to true for install opendistro
+install_opendistro: false
+
+## Deb
+# State of elasticsearch deb package
+elasticsearch_package_state: "{{ __elasticsearch_package_state }}"
+elasticsearch_gpg_key: "{{ __elasticsearch_gpg_key }}"
+elasticsearch_ppa_source: "{{ __elasticsearch_ppa_source }}"
+
+## Tar
+# Folder where find templates to configure elasticsearch.yml jvm.options and log4j2.properties files
+elasticsearch_config_templates_files: "{{ __elasticsearch_config_templates_files }}"
+# Force to reinstall elasticsearch even if is same version installed
 elasticsearch_force_reinstall: false
+
+# Systemd service config
+elasticsearch_max_open_files: 65536
+elasticsearch_max_threads: 8192
 
 # Operating system tuning. See:
 # https://www.elastic.co/guide/en/elasticsearch/reference/master/system-config.html
@@ -42,36 +74,36 @@ elasticsearch_sysctl_params:
 #   - name: vm.swappiness
 #     value: 1
 
-# Systemd service config
-elasticsearch_max_open_files: 65536
-elasticsearch_max_threads: 8192
 
-# Here you can set bootstrap.memory_lock to true if you need it
+# Here you can set bootstrap.memory_lock to true if you need it and all config parameters for elasticsearch.yml
 elasticsearch_config: {}
 
 # Owner
 elasticsearch_user: elasticsearch
 elasticsearch_group: elasticsearch
 
+## Service
 # Start on boot
-elasticsearch_service_enabled: true
+elasticsearch_service_enabled: "{{ __elasticsearch_service_enabled }}"
 
 # Current state: started, stopped
-elasticsearch_service_state: started
+elasticsearch_service_state: "{{ __elasticsearch_service_state }}"
 
+elasticsearch_private_tmp: false
 # If want to apply any extra config to elasticsearch.service
+elasticsearch_service_config_path: /etc/systemd/system/elasticsearch.service.d
+# If want to apply environment variables for example to set JAVA_HOME if not set use elastic bundled jdk
+# For debian 10 you can set PrivateTmp too
+# You can see examples in any molecule scenario of this repo
 # elasticsearch_service_dropin_template: "{{ playbook_dir }}/templates/elasticsearch/service.conf"
 
 # Files & Paths
-elasticsearch_home: /opt/elasticsearch
-elasticsearch_conf_dir: "{{ elasticsearch_home }}/config"
-elasticsearch_log_dir: /var/log/elasticsearch
-elasticsearch_data_dir: /var/lib/elasticsearch
+elasticsearch_home: "{{ __elasticsearch_home }}"
+elasticsearch_conf_dir: "{{ __elasticsearch_conf_dir }}"
+elasticsearch_log_dir: "{{ __elasticsearch_log_dir }}"
+elasticsearch_data_dir: "{{ __elasticsearch_data_dir }}"
 elasticsearch_runtime_dir: elasticsearch
-elasticsearch_pid_dir: "/var/run/{{ elasticsearch_runtime_dir }}"
-
-# Templates
-elasticsearch_template_log4j2: "{{ role_path }}/templates/log4j2.properties.j2"
+elasticsearch_pid_dir: "/run/{{ elasticsearch_runtime_dir }}"
 
 # Hosts & ports
 elasticsearch_api_host: localhost
@@ -79,8 +111,29 @@ elasticsearch_api_port: 9200
 elasticsearch_tcp_port: 9300
 
 # Plugins
+# Based on https://docs.ansible.com/ansible/2.8/modules/elasticsearch_plugin_module.html#elasticsearch-plugin-module
+# Define all plugins that you want to install the syntax follows as
+# elasticsearch_plugins:
+#  - name: mapper-size
+#    state: present
+#    # Where binary of elasticsearch-plugin is to install plugins
+#    plugin_bin: "{{ elasticsearch_home }}/bin/elasticsearch-plugin" # Optional
+#    # Where plugins are saved
+#    plugin_dir: "{{ elasticsearch_home }}/plugins" # Optional
+#    # Version of plugin, default to elasticsearch_version
+#    version: "{{ item.version | default (elasticsearch_version) }}" # Optional
+#    # Proxy host to use during plugin installation
+#    proxy_host: "{{ item.proxy_host | default(omit) }}" # Optional
+#    # Proxy port to use during plugin installation
+#    proxy_port: "{{ item.proxy_port | default(omit) }}" # Optional
+#    # Optionally set the source location to retrieve the plugin from. This can be a file:// URL to install from a local
+#    # file, or a remote URL. If this is not set, the plugin location is just based on the name.
+#    src: "{{ item.src | default(omit) }}" # Optional
+#    # Force to install
+#    force: "{{ item.force | default(omit) }}" # Optional
+#
+#
 elasticsearch_plugins: []
-elasticsearch_plugins_reinstall: false
 
 # JVM custom parameters
 elasticsearch_jvm_custom_parameters: ''

@@ -1,15 +1,10 @@
 ---
 galaxy_info:
-  company: Idealista S.A.U
   author: idealista
+  company: Idealista S.A.U
   description: Elasticsearch role
-  min_ansible_version: 2.7.5.0
+  min_ansible_version: 2.8.19
   license: Apache 2.0
-  platforms:
-    - name: Debian
-      versions:
-        - jessie
-        - stretch
   galaxy_tags:
     - web
     - system
@@ -17,5 +12,9 @@ galaxy_info:
     - logging
     - lucene
     - elk
-    - efk
     - elasticsearch
+  platforms:
+    - name: Debian
+      versions:
+        - stretch
+        - buster

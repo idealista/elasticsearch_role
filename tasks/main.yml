@@ -6,15 +6,8 @@
     - os-configure
   when: elasticsearch_os_tuning
 
-- name: Elasticsearch | Install
-  import_tasks: install.yml
-  tags:
-    - elasticsearch_install
-
-- name: Elasticsearch | Configure
-  import_tasks: config.yml
-  tags:
-    - elasticsearch_configure
+- name: Elasticsearch | Install for {{ install_mode }}
+  include_tasks: "{{ install_mode }}/main.yml"
 
 - name: Elasticsearch | Plugins
   import_tasks: plugins.yml

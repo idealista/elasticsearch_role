@@ -3,6 +3,19 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased](https://github.com/idealista/elasticsearch_role/tree/develop)
 
+## [2.0.0](https://github.com/idealista/elasticsearch_role/tree/2.0.0)
+[Full Changelog](https://github.com/idealista/elasticsearch_role/compare/1.7.1...2.0.0)
+### Added
+- *[#33](https://github.com/idealista/elasticsearch_role/issues/33) Support for install elasticsearch as unzipped tar as previous versions for default installation mode* @adrian-arapiles
+- *[#33](https://github.com/idealista/elasticsearch_role/issues/33) Support for install elasticsearch as debian service.* @adrian-arapiles
+- *[#33](https://github.com/idealista/elasticsearch_role/issues/33) Support for install opendistroelasticsearch distribution.* @adrian-arapiles
+### Changed
+- *Update test-requirements dependencies and goss* @adrian-arapiles
+- *[#28](https://github.com/idealista/elasticsearch_role/issues/28) Update default versions to current* @adrian-arapiles
+- *[#29](https://github.com/idealista/elasticsearch_role/issues/29) Tests with buster distribution and java 11* @adrian-arapiles
+- *Replaces all plugins installation in favor of ansible elasticsearch_plugin module* @adrian-arapiles
+- *Improve the task for check if elasticsearch installed (in tar install) that avoid reinstall if node has service stopped* @adrian-arapiles
+
 ## [1.7.1](https://github.com/idealista/elasticsearch_role/tree/1.7.1)
 [Full Changelog](https://github.com/idealista/elasticsearch_role/compare/1.7.0...1.7.1)
 ### Added
