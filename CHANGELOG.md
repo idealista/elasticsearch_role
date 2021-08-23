@@ -2,6 +2,9 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased](https://github.com/idealista/elasticsearch_role/tree/develop)
+
+## [2.0.1](https://github.com/idealista/elasticsearch_role/tree/2.0.1)
+[Full Changelog](https://github.com/idealista/elasticsearch_role/compare/2.0.0...2.0.1)
 ### Fixed
 - *[43](https://github.com/idealista/elasticsearch_role/issues/43) Change owner of `elasticsearch_data_dir` on deb installation* @adrian-arapiles
 
