@@ -3,6 +3,11 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased](https://github.com/idealista/elasticsearch_role/tree/develop)
 
+## [2.1.0](https://github.com/idealista/elasticsearch_role/tree/2.1.0)
+[Full Changelog](https://github.com/idealista/elasticsearch_role/compare/2.0.1...2.1.0)
+### Added 
+*[46](https://github.com/idealista/elasticsearch_role/issues/46) Be able to use custom uid and gid on elasticsearch user and group* @adrian-arapiles
+
 ## [2.0.1](https://github.com/idealista/elasticsearch_role/tree/2.0.1)
 [Full Changelog](https://github.com/idealista/elasticsearch_role/compare/2.0.0...2.0.1)
 ### Fixed

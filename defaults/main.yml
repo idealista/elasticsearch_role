@@ -81,6 +81,8 @@ elasticsearch_config: {}
 # Owner
 elasticsearch_user: elasticsearch
 elasticsearch_group: elasticsearch
+# elasticsearch_uid: 990
+# elasticsearch_gid: 990
 
 ## Service
 # Start on boot

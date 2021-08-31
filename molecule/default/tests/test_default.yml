@@ -10,13 +10,11 @@ user:
       exists: true
       groups:
         - {{ elasticsearch_group }}
-      uid:
-        lt: 1000
+      uid: 990
 group:
     {{ elasticsearch_group }}:
       exists: true
-      gid:
-        lt: 1000
+      gid: 990
 
 file:
     /opt/elasticsearch:
