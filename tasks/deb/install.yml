@@ -15,6 +15,20 @@
     state: present
     filename: elasticsearch
 
+- name: Elasticsearch | Ensure Elasticsearch group
+  group:
+    name: "{{ elasticsearch_group }}"
+    system: true
+    gid: "{{ elasticsearch_gid | default(omit) }}"
+
+- name: Elasticsearch | Ensure Elasticsearch user
+  user:
+    name: "{{ elasticsearch_user }}"
+    group: "{{ elasticsearch_group }}"
+    shell: /bin/false
+    system: true
+    create_home: false
+    uid: "{{ elasticsearch_uid | default(omit) }}"
 - name: Elasticsearch | Install elasticsearch {{ elasticsearch_version }}
   apt:
     name: "{{ item }}={{ elasticsearch_version }}"
