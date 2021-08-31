@@ -4,6 +4,9 @@ install_mode: tar
 
 elasticsearch_service_dropin_template: "{{ playbook_dir }}/templates/elasticsearch/service.conf"
 
+elasticsearch_uid: 990
+elasticsearch_gid: 990
+
 elasticsearch_config:
   node.name: "{{ elasticsearch_api_host }}"
   cluster.name: idealista-cluster
