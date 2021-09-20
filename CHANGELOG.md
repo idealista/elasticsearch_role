@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased](https://github.com/idealista/elasticsearch_role/tree/develop)
 
+### Fixed
+*[49](https://github.com/idealista/elasticsearch_role/issues/49) Notify restart after version update on deb install mode* @adrian-arapiles  
+*[49](https://github.com/idealista/elasticsearch_role/issues/49) Correctly reinstall plugins after version change* @adrian-arapiles
+
 ## [2.1.0](https://github.com/idealista/elasticsearch_role/tree/2.1.0)
 [Full Changelog](https://github.com/idealista/elasticsearch_role/compare/2.0.1...2.1.0)
 ### Added 

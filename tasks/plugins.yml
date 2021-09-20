@@ -1,5 +1,19 @@
 ---
 
+- name: Elasticsearch | Remove to upgrade elasticsearch plugins
+  elasticsearch_plugin:
+    name: "{{ item.name }}"
+    plugin_bin: "{{ elasticsearch_home }}/bin/elasticsearch-plugin"
+    plugin_dir: "{{ elasticsearch_home }}/plugins"
+    state: "absent"
+    force: "{{ item.force | default(omit) }}"
+  loop: "{{ elasticsearch_plugins }}"
+  become_user: "{{ elasticsearch_user }}"
+  when:
+    - elasticsearch_plugins | length > 0
+    - elasticsearch_version_check is defined and not elasticsearch_version_check.stat.exists or
+      elasticsearch_deb_upgraded is defined and elasticsearch_deb_upgraded.changed
+
 - name: Elasticsearch | Install elasticsearch plugins
   elasticsearch_plugin:
     name: "{{ item.name }}"

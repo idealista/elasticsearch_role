@@ -29,13 +29,22 @@
     system: true
     create_home: false
     uid: "{{ elasticsearch_uid | default(omit) }}"
+
+- name: Elasticsearch | Gather package facts
+  package_facts:
+    manager: "auto"
+
 - name: Elasticsearch | Install elasticsearch {{ elasticsearch_version }}
   apt:
     name: "{{ item }}={{ elasticsearch_version }}"
     update_cache: true
     state: "{{ elasticsearch_package_state }}"
+    force: "{{ (elasticsearch_version not in ansible_facts.packages[item][0].version | default('')) | ternary(True, omit) }}"
   loop:
     - "{{ (elasticsearch_license_type == 'oss') | ternary('elasticsearch-oss', 'elasticsearch') }}"
+  register: elasticsearch_deb_upgraded
+  notify:
+    - restart elasticsearch
 
 - name: Elasticsearch | Include vars for opendistro
   include_vars: vars/opendistro.yml
