@@ -20,5 +20,5 @@
     name: "opendistroforelasticsearch={{ opendistro_version }}-1"
     update_cache: true
     state: "{{ opendistro_package_state }}"
-    force: "{{ (opendistro_version not in ansible_facts.packages[item][0].version) | ternary(True, omit) }}"
+    force: "{{ (opendistro_version not in ansible_facts.packages['opendistroforelasticsearch'][0].version | default('')) | ternary(True, omit) }}"
   notify: restart elasticsearch

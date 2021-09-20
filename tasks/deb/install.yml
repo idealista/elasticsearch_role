@@ -39,7 +39,7 @@
     name: "{{ item }}={{ elasticsearch_version }}"
     update_cache: true
     state: "{{ elasticsearch_package_state }}"
-    force: "{{ (elasticsearch_version not in ansible_facts.packages[item][0].version) | ternary(True, omit) }}"
+    force: "{{ (elasticsearch_version not in ansible_facts.packages[item][0].version | default('')) | ternary(True, omit) }}"
   loop:
     - "{{ (elasticsearch_license_type == 'oss') | ternary('elasticsearch-oss', 'elasticsearch') }}"
   register: elasticsearch_deb_upgraded
