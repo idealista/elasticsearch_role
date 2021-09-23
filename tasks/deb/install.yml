@@ -34,7 +34,7 @@
   package_facts:
     manager: "auto"
 
-- name: Elasticsearch | Install elasticsearch {{ elasticsearch_version }}
+- name: "Elasticsearch | Install elasticsearch {{ elasticsearch_version }}"
   apt:
     name: "{{ item }}={{ elasticsearch_version }}"
     update_cache: true
