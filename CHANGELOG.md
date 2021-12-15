@@ -3,6 +3,11 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased](https://github.com/idealista/elasticsearch_role/tree/develop)
 
+## [2.1.2](https://github.com/idealista/elasticsearch_role/tree/2.1.2)
+[Full Changelog](https://github.com/idealista/elasticsearch_role/compare/2.1.1...2.1.2)
+### Fixed
+*[52](https://github.com/idealista/elasticsearch_role/issues/52) Fix jvm.options for different jvm major versions @Pablohn26
+
 ## [2.1.1](https://github.com/idealista/elasticsearch_role/tree/2.1.1)
 [Full Changelog](https://github.com/idealista/elasticsearch_role/compare/2.1.0...2.1.1)
 ### Fixed
