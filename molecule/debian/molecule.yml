@@ -8,7 +8,7 @@ lint: |
   ansible-lint .
 platforms:
   - name: esmasterdata1
-    image: ${MOLECULE_DISTRO:-idealista/jdk:11.0.6-stretch-openjdk-headless}
+    image: ${MOLECULE_DISTRO:-idealista/jdk:11.0.12-stretch-openjdk-headless}
     groups:
       - elasticsearch
       - master_data_nodes
@@ -33,7 +33,7 @@ platforms:
           - esmasterdata1
 
   - name: esmasterdata2
-    image: ${MOLECULE_DISTRO:-idealista/jdk:11.0.6-stretch-openjdk-headless}
+    image: ${MOLECULE_DISTRO:-idealista/jdk:11.0.12-stretch-openjdk-headless}
     groups:
       - elasticsearch
       - master_data_nodes
@@ -58,7 +58,7 @@ platforms:
           - esmasterdata2
 
   - name: esmasterdata3
-    image: ${MOLECULE_DISTRO:-idealista/jdk:11.0.6-stretch-openjdk-headless}
+    image: ${MOLECULE_DISTRO:-idealista/jdk:11.0.12-stretch-openjdk-headless}
     groups:
       - elasticsearch
       - master_data_nodes
