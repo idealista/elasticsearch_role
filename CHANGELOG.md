@@ -2,8 +2,11 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased](https://github.com/idealista/elasticsearch_role/tree/develop)
+
+## [2.1.3](https://github.com/idealista/elasticsearch_role/tree/2.1.3)
+[Full Changelog](https://github.com/idealista/elasticsearch_role/compare/2.1.2...2.1.3)
 ### Fixed
-*[56](https://github.com/idealista/elasticsearch_role/issues/56)* Add notify restart when drop-in file content changed @aarapiles
+*[56](https://github.com/idealista/elasticsearch_role/issues/56)* Add notify restart when drop-in file content changed @adrian-arapiles
 
 ## [2.1.2](https://github.com/idealista/elasticsearch_role/tree/2.1.2)
 [Full Changelog](https://github.com/idealista/elasticsearch_role/compare/2.1.1...2.1.2)
