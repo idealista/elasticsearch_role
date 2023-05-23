@@ -2,22 +2,41 @@
 install_mode: deb
 elasticsearch_api_port: 9200
 
-elasticsearch_service_dropin_template: "{{ playbook_dir }}/templates/elasticsearch/service.conf"
+elasticsearch_service_dropin_template: "{{ molecule_scenario_directory }}/templates/elasticsearch/service.conf"
 
 elasticsearch_uid: 990
 elasticsearch_gid: 990
 
-elasticsearch_config:
+elasticsearch_config: "{{ elasticsearch_default_config | combine(vars['elasticsearch_' ~ elasticsearch_version.split('.')[0] ~ '_extra_config'])}}"
+
+elasticsearch_default_config:
   node.name: "{{ elasticsearch_api_host }}"
   cluster.name: idealista-cluster
   network.host: _site_
-  discovery.seed_hosts: ["esmasterdata1", "esmasterdata2", "esmasterdata3"]
-  cluster.initial_master_nodes: ["esmasterdata1", "esmasterdata2", "esmasterdata3"]
+  discovery.seed_hosts: [ "esmasterdata1", "esmasterdata2", "esmasterdata3" ]
+  cluster.initial_master_nodes: [ "esmasterdata1", "esmasterdata2", "esmasterdata3" ]
   http.port: "{{ elasticsearch_api_port }}"
   bootstrap.memory_lock: true
-  node.data: true
-  node.master: true
-  node.ingest: false
+  node.roles: [ master, data, ingest, transform ]
+  xpack:
+    ml:
+      enabled: false
+    security:
+      enabled: false
+
+elasticsearch_7_extra_config:
+
+elasticsearch_8_extra_config:
+  xpack:
+    security:
+      autoconfiguration:
+        enabled: false
+      http:
+        ssl:
+          enabled: false
+      transport:
+        ssl:
+          enabled: false
 
 elasticsearch_jvm_custom_parameters:
   - '-Xms256m'
