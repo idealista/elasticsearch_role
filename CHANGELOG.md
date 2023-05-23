@@ -2,10 +2,13 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased](https://github.com/idealista/elasticsearch_role/tree/develop)
+### Added
+Add support for debian bullseye. @adrian-arapiles
 ### Changed
 *[59](https://github.com/idealista/elasticsearch_role/issues/59)* Remove support of archived opendistro project. @adrian-arapiles
 Removed tests for debian stretch. @adrian-arapiles
 Remove oss version (prior to 7.10.2) and variables because is unnecessary after opendistro remove. @adrian-arapiles  
+
 ### Updated
 Updated test-requirements dependencies. @adrian-arapiles
 
