@@ -6,7 +6,7 @@ os: linux
 services:
   - docker
 install:
-  - pip install pipenv
+  - pip3 install pipenv
   - pipenv sync
 env:
   jobs:
