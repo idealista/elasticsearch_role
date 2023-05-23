@@ -29,6 +29,7 @@ elasticsearch_7_extra_config:
 elasticsearch_8_extra_config:
   xpack:
     security:
+      enabled: false
       autoconfiguration:
         enabled: false
       http:
