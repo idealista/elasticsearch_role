@@ -39,7 +39,7 @@
     name: "elasticsearch={{ elasticsearch_version }}"
     update_cache: true
     state: "{{ elasticsearch_package_state }}"
-    force: "{{ (elasticsearch_version not in ansible_facts.packages[item][0].version | default('')) | ternary(True, omit) }}"
+    force: "{{ (elasticsearch_version not in ansible_facts.packages['elasticsearch'][0].version | default('')) | ternary(True, omit) }}"
   register: elasticsearch_deb_upgraded
   retries: 3
   until: elasticsearch_deb_upgraded is success

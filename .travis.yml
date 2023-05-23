@@ -9,6 +9,8 @@ install:
   - pip3 install pipenv
   - pipenv sync
 env:
+  global:
+    - PIPENV_IGNORE_VIRTUALENVS=1
   jobs:
     - MOLECULE_DISTRO=idealista/jdk:8u292-buster-adoptopenjdk-headless JAVA_JDK_HOME=/usr/lib/jvm/adoptopenjdk-8-hotspot-amd64 ELASTICSEARCH_VERSION=7.17.10
     - MOLECULE_DISTRO=idealista/jdk:11.0.14-buster-openjdk-headless JAVA_JDK_HOME=/usr/lib/jvm/java-11-openjdk-amd64 ELASTICSEARCH_VERSION=7.17.10

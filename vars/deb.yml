@@ -4,7 +4,7 @@ elasticsearch_required_libs:
   - apt-transport-https
 
 __elasticsearch_gpg_key: "https://artifacts.elastic.co/GPG-KEY-elasticsearch"
-__elasticsearch_ppa_basic: "deb https://artifacts.elastic.co/packages/{{ elasticsearch_major_version }}.x/apt stable main"
+__elasticsearch_ppa_source: "deb https://artifacts.elastic.co/packages/{{ elasticsearch_major_version }}.x/apt stable main"
 
 ## General
 __elasticsearch_package_state: present
