@@ -14,7 +14,7 @@ elasticsearch_ppa_source: "{{ __elasticsearch_ppa_source }}"
 
 ## Tar
 # Platform available: linux-x86_64, darwin-x86_64, darwin-aarch64, linux-aarch64
-# elasticsearch_platform: "{{ __elasticsearch_platform }}"
+elasticsearch_platform: "{{ __elasticsearch_platform }}"
 
 # Folder where find templates to configure elasticsearch.yml jvm.options and log4j2.properties files
 elasticsearch_config_templates_files: "{{ __elasticsearch_config_templates_files }}"
