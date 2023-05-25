@@ -1,7 +1,0 @@
----
-- name: Converge
-  hosts: elasticsearch
-  roles:
-    - role: elasticsearch_role
-      vars:
-        elasticsearch_api_host: "{{ ansible_host }}"

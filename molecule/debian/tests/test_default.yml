@@ -27,3 +27,5 @@ http:
     status: 200
   http://{{ inventory_hostname }}:{{ elasticsearch_api_port }}/_cluster/health:
     status: 200
+    body:
+      - "green"

@@ -36,20 +36,12 @@
 
 - name: Elasticsearch | Install elasticsearch {{ elasticsearch_version }}
   apt:
-    name: "{{ item }}={{ elasticsearch_version }}"
+    name: "elasticsearch={{ elasticsearch_version }}"
     update_cache: true
     state: "{{ elasticsearch_package_state }}"
-    force: "{{ (elasticsearch_version not in ansible_facts.packages[item][0].version | default('')) | ternary(True, omit) }}"
-  loop:
-    - "{{ (elasticsearch_license_type == 'oss') | ternary('elasticsearch-oss', 'elasticsearch') }}"
+    force: "{{ (elasticsearch_version not in ansible_facts.packages['elasticsearch'][0].version | default('')) | ternary(True, omit) }}"
   register: elasticsearch_deb_upgraded
+  retries: 3
+  until: elasticsearch_deb_upgraded is success
   notify:
-    - restart elasticsearch
-
-- name: Elasticsearch | Include vars for opendistro
-  include_vars: vars/opendistro.yml
-  when: install_opendistro
-
-- name: Elasticsearch | Install opendistro
-  include: install-opendistro.yml
-  when: install_opendistro
+    - Restart elasticsearch

@@ -1,5 +1,0 @@
----
-## Elastic.co ppa
-__elasticsearch_gpg_key: "https://artifacts.elastic.co/GPG-KEY-elasticsearch"
-__elasticsearch_ppa_source_basic: "deb https://artifacts.elastic.co/packages/{{ elasticsearch_major_version }}.x/apt stable main"
-__elasticsearch_ppa_source_oss: "deb https://artifacts.elastic.co/packages/oss-{{ elasticsearch_major_version }}.x/apt stable main"

@@ -1,10 +1,7 @@
 ---
 ## General
-__elasticsearch_version: 7.10.2
-__elasticsearch_license_type: oss
-
-elasticsearch_basic_license: elasticsearch
-elasticsearch_oss_license: elasticsearch-oss
+__elasticsearch_version: 8.7.1
+__elasticsearch_major_version: "{{ elasticsearch_version.split('.')[0] }}"
 
 ## Service
 # Start on boot
