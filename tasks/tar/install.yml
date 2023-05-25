@@ -37,7 +37,7 @@
   when: |
     elasticsearch_force_reinstall or
     not elasticsearch_version_check.stat.exists
-  ignore_errors: true
+  failed_when: false
 
 - name: Elasticsearch | Remove old version
   file:
@@ -58,7 +58,7 @@
     elasticsearch_force_reinstall or
     not elasticsearch_version_check.stat.exists
 
-- name: Elasticsearch | Untar Elasticsearch
+- name: Elasticsearch | Untar Elasticsearch {{ elasticsearch_package_url }}
   unarchive:
     extra_opts: ['--strip-components=1']
     src: "{{ elasticsearch_package_url }}"
@@ -76,4 +76,4 @@
     dest: "{{ elasticsearch_systemd_file }}"
     mode: 0644
   notify:
-    - restart elasticsearch
+    - Restart elasticsearch

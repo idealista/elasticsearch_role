@@ -1,7 +1,7 @@
 ---
 
 - name: Elasticsearch | Operating System Configure
-  include: os-config.yml
+  include_tasks: os-config.yml
   tags:
     - os-configure
   when: elasticsearch_os_tuning

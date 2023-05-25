@@ -1,20 +1,6 @@
 ---
-- name: Elasticsearch | Define vars
-  block:
-  - name: Elasticsearch | Include vars for {{ install_mode }}
-    include_vars: vars/{{ install_mode }}.yml
-
-  - name: Elasticsearch | Include vars elasticco
-    include_vars: vars/elasticco.yml
-
-  - name: Elasticsearch | Define elasticsearch major version
-    set_fact:
-      elasticsearch_major_version: "{{ elasticsearch_version.split('.')[0] }}"
-
-  - name: Elasticsearch | Define elasticsearch variables
-    set_fact:
-      elasticsearch_license: "{{ lookup('vars', 'elasticsearch_' ~ elasticsearch_license_type ~ '_license') }}"
-      elasticsearch_ppa_source: "{{ lookup('vars', '__elasticsearch_ppa_source_' ~  elasticsearch_license_type) }}"
+- name: Elasticsearch | Include vars for {{ install_mode }}
+  include_vars: vars/{{ install_mode }}.yml
 
 - name: Elasticsearch | Install
   include_tasks: install.yml

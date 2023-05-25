@@ -8,7 +8,7 @@ lint: |
   ansible-lint .
 platforms:
   - name: esmasterdata1
-    image: ${MOLECULE_DISTRO:-idealista/jdk:11.0.6-stretch-openjdk-headless}
+    image: ${MOLECULE_DISTRO:-idealista/jdk:11.0.14-buster-openjdk-headless}
     groups:
       - elasticsearch
       - master_data_nodes
@@ -33,7 +33,7 @@ platforms:
           - esmasterdata1
 
   - name: esmasterdata2
-    image: ${MOLECULE_DISTRO:-idealista/jdk:11.0.6-stretch-openjdk-headless}
+    image: ${MOLECULE_DISTRO:-idealista/jdk:11.0.14-buster-openjdk-headless}
     groups:
       - elasticsearch
       - master_data_nodes
@@ -58,7 +58,7 @@ platforms:
           - esmasterdata2
 
   - name: esmasterdata3
-    image: ${MOLECULE_DISTRO:-idealista/jdk:11.0.6-stretch-openjdk-headless}
+    image: ${MOLECULE_DISTRO:-idealista/jdk:11.0.14-buster-openjdk-headless}
     groups:
       - elasticsearch
       - master_data_nodes
@@ -88,6 +88,7 @@ provisioner:
     group_vars:
       elasticsearch:
         java_open_jdk_home: ${JAVA_JDK_HOME:-/usr/lib/jvm/java-11-openjdk-amd64}
-        elasticsearch_version: ${ELASTICSEARCH_VERSION:-7.10.2}
+        elasticsearch_version: ${ELASTICSEARCH_VERSION:-7.17.10}
+        elasticsearch_platform: ${ELASTICSEARCH_PLATFORM:-linux-x86_64}
 verifier:
   name: ansible
