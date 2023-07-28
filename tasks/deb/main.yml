@@ -3,11 +3,11 @@
   include_vars: vars/{{ install_mode }}.yml
 
 - name: Elasticsearch | Install
-  include_tasks: install.yml
+  import_tasks: install.yml
   tags:
     - elasticsearch_install
 
 - name: Elasticsearch | Configure
-  include_tasks: config.yml
+  import_tasks: config.yml
   tags:
     - elasticsearch_configure

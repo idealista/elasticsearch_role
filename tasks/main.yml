@@ -7,7 +7,7 @@
   when: elasticsearch_os_tuning
 
 - name: Elasticsearch | Install for {{ install_mode }}
-  include_tasks: "{{ install_mode }}/main.yml"
+  import_tasks: "{{ install_mode }}/main.yml"
 
 - name: Elasticsearch | Plugins
   import_tasks: plugins.yml
