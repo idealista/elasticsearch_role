@@ -35,7 +35,7 @@
 - name: Elasticsearch | Configuring Elasticsearch
   template:
     src: "{{ item }}"
-    dest: "{{ elasticsearch_conf_dir }}/{{ item | basename | regex_replace('.j2', '') }}"
+    dest: "{{ elasticsearch_conf_dir }}/{{ item | basename | regex_replace('.j2$', '') }}"
     owner: "{{ elasticsearch_user }}"
     group: "{{ elasticsearch_group }}"
     mode: 0644

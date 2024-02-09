@@ -39,6 +39,11 @@ elasticsearch_8_extra_config:
         ssl:
           enabled: false
 
+elasticsearch_config_templates_files:
+  - elasticsearch.yml.j2
+  - deb/jvm.options.j2
+  - log4j2.properties.j2
+
 elasticsearch_jvm_custom_parameters:
   - '-Xms256m'
   - '-Xmx256m'
