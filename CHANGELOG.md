@@ -2,6 +2,9 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased](https://github.com/idealista/elasticsearch_role/tree/develop)
+*[62](https://github.com/idealista/elasticsearch_role/issues/62)* Fix replace in j2 config files using $ at end. @adrian-arapiles
+
+
 
 ## [3.0.0](https://github.com/idealista/elasticsearch_role/tree/3.0.0)
 [Full Changelog](https://github.com/idealista/elasticsearch_role/compare/2.1.3...3.0.0)
