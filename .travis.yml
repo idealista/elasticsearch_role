@@ -1,5 +1,5 @@
 ---
-dist: focal
+dist: jammy
 language: python
 python: "3.9.15"
 os: linux
@@ -12,14 +12,13 @@ env:
   global:
     - PIPENV_IGNORE_VIRTUALENVS=1
   jobs:
-    - MOLECULE_DISTRO=idealista/jdk:8u292-buster-adoptopenjdk-headless JAVA_JDK_HOME=/usr/lib/jvm/adoptopenjdk-8-hotspot-amd64 ELASTICSEARCH_VERSION=7.17.10
-    - MOLECULE_DISTRO=idealista/jdk:11.0.14-buster-openjdk-headless JAVA_JDK_HOME=/usr/lib/jvm/java-11-openjdk-amd64 ELASTICSEARCH_VERSION=7.17.10
-    - MOLECULE_DISTRO=debian:buster-slim ELASTICSEARCH_VERSION=7.17.10
-    - MOLECULE_DISTRO=debian:buster-slim ELASTICSEARCH_VERSION=8.7.1
-    - MOLECULE_DISTRO=idealista/jdk:8u292-bullseye-adoptopenjdk-headless ELASTICSEARCH_VERSION=7.17.10
-    - MOLECULE_DISTRO=idealista/jdk:11.0.16-bullseye-openjdk-headless ELASTICSEARCH_VERSION=7.17.10
-    - MOLECULE_DISTRO=idealista/jdk:17.0.4-bullseye-openjdk-headless ELASTICSEARCH_VERSION=7.17.10
-    - MOLECULE_DISTRO=idealista/jdk:17.0.4-bullseye-openjdk-headless ELASTICSEARCH_VERSION=8.7.1
+    - MOLECULE_DISTRO=debian:buster-slim ELASTICSEARCH_VERSION=7.17.28
+    - MOLECULE_DISTRO=debian:buster-slim ELASTICSEARCH_VERSION=8.18.0
+    - MOLECULE_DISTRO=debian:buster-slim ELASTICSEARCH_VERSION=9.0.0
+    - MOLECULE_DISTRO=idealista/jdk:11.0.20-bullseye-temurin-jdk ELASTICSEARCH_VERSION=7.17.28
+    - MOLECULE_DISTRO=idealista/jdk:17.0.8-bullseye-temurin-jdk ELASTICSEARCH_VERSION=7.17.28
+    - MOLECULE_DISTRO=idealista/jdk:17.0.8-bullseye-temurin-jdk ELASTICSEARCH_VERSION=8.18.0
+    - MOLECULE_DISTRO=idealista/jdk:17.0.8-bullseye-temurin-jdk ELASTICSEARCH_VERSION=9.0.0
 script:
   - pipenv run molecule test --all
 
