@@ -11,7 +11,7 @@ elasticsearch_major_version: "{{ __elasticsearch_major_version }}"
 elasticsearch_package_state: "{{ __elasticsearch_package_state }}"
 elasticsearch_gpg_key: "{{ __elasticsearch_gpg_key }}"
 elasticsearch_ppa_source: "{{ __elasticsearch_ppa_source }}"
-elasticsearch_required_libs: "{{ elasticsearch_required_libs_extended | default({}) | combine(__elasticsearch_required_libs) }}"
+elasticsearch_required_libs: "{{ elasticsearch_required_libs_extended | default([]) + __elasticsearch_required_libs }}"
 
 ## Tar
 # Platform available: linux-x86_64, darwin-x86_64, darwin-aarch64, linux-aarch64
