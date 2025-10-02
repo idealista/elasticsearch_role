@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased](https://github.com/idealista/elasticsearch_role/tree/develop)
 
 
+## [3.0.3](https://github.com/idealista/elasticsearch_role/tree/3.0.3)
+### Fixed
+Fix typo combine 2 list for lib dependencies. @adrian-arapiles
+
 ## [3.0.2](https://github.com/idealista/elasticsearch_role/tree/3.0.2)
 ### Fixed
 Add gpg missing dependency in deb installation. @adrian-arapiles
