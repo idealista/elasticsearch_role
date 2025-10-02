@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased](https://github.com/idealista/elasticsearch_role/tree/develop)
 
 
+## [3.0.2](https://github.com/idealista/elasticsearch_role/tree/3.0.2)
+### Fixed
+Add gpg missing dependency in deb installation. @adrian-arapiles
+Add the posibility to override lib requirements. @adrian-arapiles
+
 ## [3.0.1](https://github.com/idealista/elasticsearch_role/tree/3.0.1)
 ### Fixed
 *[62](https://github.com/idealista/elasticsearch_role/issues/62)* Fix replace in j2 config files using $ at end. @adrian-arapiles
