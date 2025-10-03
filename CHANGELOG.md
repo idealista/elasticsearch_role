@@ -3,15 +3,22 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased](https://github.com/idealista/elasticsearch_role/tree/develop)
 
+## [3.0.5](https://github.com/idealista/elasticsearch_role/tree/3.0.5)
+### Fixed
+Fix changed config folder loop because `recurse: yes` apply mode to folders and files. @adrian-arapiles
 
-## [3.0.3](https://github.com/idealista/elasticsearch_role/tree/3.0.3)
+## [3.0.4](https://github.com/idealista/elasticsearch_role/tree/3.0.4)
 ### Fixed
 Fix typo combine 2 list for lib dependencies. @adrian-arapiles
 
-## [3.0.2](https://github.com/idealista/elasticsearch_role/tree/3.0.2)
+## [3.0.3](https://github.com/idealista/elasticsearch_role/tree/3.0.3)
 ### Fixed
 Add gpg missing dependency in deb installation. @adrian-arapiles
 Add the posibility to override lib requirements. @adrian-arapiles
+
+## [3.0.2](https://github.com/idealista/elasticsearch_role/tree/3.0.2)
+### Added
+Add recurse: yes in elasticsearch config folders. @adrian-arapiles
 
 ## [3.0.1](https://github.com/idealista/elasticsearch_role/tree/3.0.1)
 ### Fixed
