@@ -1,4 +1,12 @@
 ---
+- name: Elasticsearch | Set Plugin Directory Permissions
+  file:
+    path: "{{ elasticsearch_home }}/plugins"
+    state: directory
+    owner: "{{ elasticsearch_user }}"
+    group: "{{ elasticsearch_group }}"
+    mode: 0755
+    recurse: true
 
 - name: Elasticsearch | Remove to upgrade elasticsearch plugins
   elasticsearch_plugin:
